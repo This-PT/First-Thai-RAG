@@ -1,0 +1,77 @@
+[
+  {
+    "_type": "fact — date, stated verbatim",
+    "question": "เหตุการณ์ลอบปลงพระชนม์ที่ซาราเจโวเกิดขึ้นเมื่อใด",
+    "expected_keywords": ["28", "มิถุนายน"]
+  },
+  {
+    "_type": "fact — named person",
+    "question": "ใครเป็นผู้ลอบยิงมกุฎราชกุมารของออสเตรีย-ฮังการี",
+    "expected_keywords": ["ปรินซิป"]
+  },
+  {
+    "_type": "fact — organization",
+    "question": "ผู้ลงมือลอบปลงพระชนม์เป็นสมาชิกขององค์กรลับใด",
+    "expected_keywords": ["มือดำ"]
+  },
+  {
+    "_type": "fact — place",
+    "question": "ซาราเจโวเป็นเมืองหลวงของจังหวัดใด",
+    "expected_keywords": ["บอสเนีย"]
+  },
+  {
+    "_type": "list — requires the enumerated section",
+    "question": "ปัจจัยพื้นฐาน 4 ประการที่นำไปสู่สงครามโลกครั้งที่ 1 มีอะไรบ้าง",
+    "expected_keywords": ["ชาตินิยม", "จักรวรรดินิยม", "ทหารนิยม", "พันธมิตร"]
+  },
+  {
+    "_type": "fact — year + members",
+    "question": "ระบบพันธมิตรสามฝ่ายก่อตั้งขึ้นในปีใด และมีประเทศใดบ้าง",
+    "expected_keywords": ["1882", "อิตาลี"]
+  },
+  {
+    "_type": "paraphrase — asks using words not in the source text",
+    "question": "ชาติใดที่แข่งขันกันสร้างกำลังทางเรือก่อนเกิดสงคราม",
+    "expected_keywords": ["อังกฤษ", "เยอรมนี"]
+  },
+  {
+    "_type": "multi-paragraph — chain of declarations spans several paragraphs",
+    "question": "หลังรัสเซียประกาศระดมพล เยอรมนีทำอะไรต่อ และเมื่อใด",
+    "expected_keywords": ["1 สิงหาคม", "รัสเซีย"]
+  },
+  {
+    "_type": "rare detail — mentioned once",
+    "question": "แผนการสงครามของเยอรมนีที่กล่าวถึงในเอกสารมีชื่อว่าอะไร",
+    "expected_keywords": ["ชลีเฟน"]
+  },
+  {
+    "_type": "rare detail — year deep in the text",
+    "question": "ความเป็นกลางของเบลเยียมได้รับการค้ำประกันจากอังกฤษในปีใด",
+    "expected_keywords": ["1839"]
+  },
+  {
+    "_type": "cross-section — jumps from the WWI half to the Siam half",
+    "question": "สยามประกาศสงครามเมื่อใด",
+    "expected_keywords": ["21", "กรกฎาคม"]
+  },
+  {
+    "_type": "cross-section — Siam's opponents",
+    "question": "สยามประกาศสงครามกับประเทศใดบ้าง",
+    "expected_keywords": ["เยอรมนี", "ออสเตรีย-ฮังการี"]
+  },
+  {
+    "_type": "rare detail — Siam section, single mention",
+    "question": "รัชกาลที่ 6 ทรงศึกษาวิชาการทหารที่โรงเรียนใดในอังกฤษ",
+    "expected_keywords": ["แซนด์เฮิร์สต์"]
+  },
+  {
+    "_type": "number — requires precision",
+    "question": "เยอรมนีประกาศทำสงครามเรือดำน้ำแบบไม่จำกัดขอบเขตเมื่อใด",
+    "expected_keywords": ["1 กุมภาพันธ์", "1917"]
+  },
+  {
+    "_type": "NEGATIVE CASE — not in the corpus. PASS = the system refuses. Score by hand if the wording varies.",
+    "question": "สงครามโลกครั้งที่ 2 สิ้นสุดลงเมื่อใด",
+    "expected_keywords": ["ไม่ทราบ"]
+  }
+]
