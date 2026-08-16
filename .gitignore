@@ -1,4 +1,4 @@
 .env
-.__pycache__
+__pycache__
 .venv
-chroma_persistent_storage
+chroma_persistent_storage/
