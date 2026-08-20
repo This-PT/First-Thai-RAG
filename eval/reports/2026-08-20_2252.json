@@ -1,0 +1,290 @@
+{
+  "config": {
+    "n_results": 10,
+    "threshold": 0.75,
+    "metric": "keyword coverage",
+    "model": "gpt-4o-mini",
+    "temperature": 0,
+    "embedding_model": "text-embedding-3-small",
+    "max_chars": 1200,
+    "overlap_paras": 1
+  },
+  "summary": {
+    "retrieval_hits": 11,
+    "retrieval_mean": 0.5921052631578947,
+    "answer_hits": 14,
+    "answer_mean": 0.7368421052631579
+  },
+  "results": [
+    {
+      "question": "เหตุการณ์ลอบปลงพระชนม์ที่ซาราเจโวเกิดขึ้นเมื่อใด",
+      "expected": [
+        "28",
+        "มิถุนายน"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "เหตุการณ์ลอบปลงพระชนม์ที่ซาราเจโวเกิดขึ้นเมื่อวันที่ 28 มิถุนายน 1914"
+    },
+    {
+      "question": "ใครเป็นผู้ลอบยิงมกุฎราชกุมารของออสเตรีย-ฮังการี",
+      "expected": [
+        "ปรินซิป"
+      ],
+      "retrieval_score": 0.0,
+      "answer_score": 0.0,
+      "retrieval_pass": false,
+      "answer_pass": false,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "ผู้ลงมือลอบปลงพระชนม์เป็นสมาชิกขององค์กรลับใด",
+      "expected": [
+        "มือดำ"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ผู้ลงมือลอบปลงพระชนม์เป็นสมาชิกของสมาคมลับมือดำ ซึ่งมีวัตถุประสงค์ในการรวมประชาชนที่เป็นเชื้อสายสลาวิคให้เข้ามารวมอยู่ภายใต้ราชอาณาจักรเซอร์เบีย"
+    },
+    {
+      "question": "ซาราเจโวเป็นเมืองหลวงของจังหวัดใด",
+      "expected": [
+        "บอสเนีย"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 0.0,
+      "retrieval_pass": true,
+      "answer_pass": false,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "ปัจจัยพื้นฐาน 4 ประการที่นำไปสู่สงครามโลกครั้งที่ 1 มีอะไรบ้าง",
+      "expected": [
+        "ชาตินิยม",
+        "จักรวรรดินิยม",
+        "ทหารนิยม",
+        "พันธมิตร"
+      ],
+      "retrieval_score": 0.25,
+      "answer_score": 0.0,
+      "retrieval_pass": false,
+      "answer_pass": false,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "ระบบพันธมิตรสามฝ่ายก่อตั้งขึ้นในปีใด และมีประเทศใดบ้าง",
+      "expected": [
+        "1882",
+        "อิตาลี"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ระบบพันธมิตรสามฝ่ายก่อตั้งขึ้นในปี 1882 โดยประกอบด้วยประเทศเยอรมนี ออสเตรียฮังการี และอิตาลี"
+    },
+    {
+      "question": "ชาติใดที่แข่งขันกันสร้างกำลังทางเรือก่อนเกิดสงคราม",
+      "expected": [
+        "อังกฤษ",
+        "เยอรมนี"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 0.0,
+      "retrieval_pass": true,
+      "answer_pass": false,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "หลังรัสเซียประกาศระดมพล เยอรมนีทำอะไรต่อ และเมื่อใด",
+      "expected": [
+        "1 สิงหาคม",
+        "รัสเซีย"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "หลังรัสเซียประกาศระดมพล เยอรมนีได้ยื่นคำขาดให้รัสเซียหยุดการกระทำดังกล่าว แต่รัสเซียไม่ตอบรับคำขาดนั้น ดังนั้น เยอรมนีจึงประกาศระดมพลในวันที่ 1 สิงหาคม 1914 และประกาศสงครามกับรัสเซียในวันเดียวกันด้วย"
+    },
+    {
+      "question": "แผนการสงครามของเยอรมนีที่กล่าวถึงในเอกสารมีชื่อว่าอะไร",
+      "expected": [
+        "ชลีเฟน"
+      ],
+      "retrieval_score": 0.0,
+      "answer_score": 0.0,
+      "retrieval_pass": false,
+      "answer_pass": false,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "ความเป็นกลางของเบลเยียมได้รับการค้ำประกันจากอังกฤษในปีใด",
+      "expected": [
+        "1839"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ความเป็นกลางของเบลเยียมได้รับการค้ำประกันจากอังกฤษในปี 1839."
+    },
+    {
+      "question": "สยามประกาศสงครามเมื่อใด",
+      "expected": [
+        "21",
+        "กรกฎาคม"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "สยามประกาศสงครามกับเยอรมนีและออสเตรีย-ฮังการีในคืนวันนั้น คือวันที่ 21 กรกฎาคม 2460 (ค.ศ. 1917)"
+    },
+    {
+      "question": "สยามประกาศสงครามกับประเทศใดบ้าง",
+      "expected": [
+        "เยอรมนี",
+        "ออสเตรีย-ฮังการี"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "สยามประกาศสงครามกับประเทศเยอรมนีและออสเตรีย-ฮังการี"
+    },
+    {
+      "question": "รัชกาลที่ 6 ทรงศึกษาวิชาการทหารที่โรงเรียนใดในอังกฤษ",
+      "expected": [
+        "แซนด์เฮิร์สต์"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "รัชกาลที่ 6 ทรงศึกษาวิชาการทหารที่โรงเรียนนายร้อยทหารบกแซนด์เฮิร์สต์ (Sandhurst) ในประเทศอังกฤษ"
+    },
+    {
+      "question": "เยอรมนีประกาศทำสงครามเรือดำน้ำแบบไม่จำกัดขอบเขตเมื่อใด",
+      "expected": [
+        "1 กุมภาพันธ์",
+        "1917"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "เยอรมนีประกาศทำสงครามเรือดำน้ำแบบไม่จำกัดขอบเขตอย่างเป็นทางการในวันที่ 1 กุมภาพันธ์ 1917"
+    },
+    {
+      "question": "สงครามโลกครั้งที่ 2 สิ้นสุดลงเมื่อใด",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "retrieval_score": 0.0,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "สงครามเย็นเริ่มต้นเมื่อใด",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "retrieval_score": 0.0,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "รัชกาลที่ 9 ขึ้นครองราชย์เมื่อใด",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "retrieval_score": 0.0,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "ใครเป็นผู้ก่อตั้งองค์การสหประชาชาติ",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "retrieval_score": 0.0,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "โทรศัพท์มือถือเครื่องแรกผลิตในปีใด",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "retrieval_score": 0.0,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ"
+    }
+  ],
+  "failures": [
+    {
+      "question": "ใครเป็นผู้ลอบยิงมกุฎราชกุมารของออสเตรีย-ฮังการี",
+      "expected": [
+        "ปรินซิป"
+      ],
+      "retrieval_score": 0.0,
+      "answer_score": 0.0,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "ซาราเจโวเป็นเมืองหลวงของจังหวัดใด",
+      "expected": [
+        "บอสเนีย"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 0.0,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "ปัจจัยพื้นฐาน 4 ประการที่นำไปสู่สงครามโลกครั้งที่ 1 มีอะไรบ้าง",
+      "expected": [
+        "ชาตินิยม",
+        "จักรวรรดินิยม",
+        "ทหารนิยม",
+        "พันธมิตร"
+      ],
+      "retrieval_score": 0.25,
+      "answer_score": 0.0,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "ชาติใดที่แข่งขันกันสร้างกำลังทางเรือก่อนเกิดสงคราม",
+      "expected": [
+        "อังกฤษ",
+        "เยอรมนี"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 0.0,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "แผนการสงครามของเยอรมนีที่กล่าวถึงในเอกสารมีชื่อว่าอะไร",
+      "expected": [
+        "ชลีเฟน"
+      ],
+      "retrieval_score": 0.0,
+      "answer_score": 0.0,
+      "answer": "ไม่ทราบ"
+    }
+  ]
+}

@@ -97,7 +97,7 @@ def generate_response(question, relevant_chunks):
         "You are an assistant for question-answering tasks. Use the following pieces of "
         "retrieved context to answer the question. If you don't know the answer, say that you "
         "don't know. Use three sentences maximum and keep the answer concise."
-        "\n\nContext:\n" + context + "\n\nQuestion:\n" + question
+        "\n\nContext:\n" + context + "\n\nQuestion:\n" + question +"ตอบจากข้อความที่ให้มาเท่านั้น ห้ามใช้ความรู้ภายนอกถ้าข้อความมีข้อมูลที่ตอบคำถามได้ ให้ตอบ แม้ถ้อยคำในคำถามกับในข้อความจะไม่ตรงกันทุกคำตอบว่า \"ไม่ทราบ\" เฉพาะเมื่อข้อความที่ให้มาไม่มีข้อมูลนั้นจริง ๆ"
     )
 
     response = client.chat.completions.create(

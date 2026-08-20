@@ -122,3 +122,12 @@ Retrieval is nearly flat from 3 to 10 — the most diagnostic result here. The f
 
 
 overall best setup =  chunk_size = 1200 / overlaps = 1/N_RESULTS = 10
+
+
+
+
+### Update
+
+- **20/08/26** i found that my RAG had a big problem which is retrieval failure some . Since,retrieval_score is 1.0 but after i read all chunks i realize that i couldn't answer it either . So the score
+was lying.
+**The reason**: my score only checks if the keyword appears somewhere in the 10 chunks. If key words showed up in chunk about a different topic, so the score said 1.0 — but the sentence that really answers the question was never retrieved.

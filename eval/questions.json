@@ -73,5 +73,20 @@
     "_type": "NEGATIVE CASE — not in the corpus. PASS = the system refuses. Score by hand if the wording varies.",
     "question": "สงครามโลกครั้งที่ 2 สิ้นสุดลงเมื่อใด",
     "expected_keywords": ["ไม่ทราบ"]
-  }
+  },
+  { "_type": "NEGATIVE — near miss, same era different war",
+  "question": "สงครามเย็นเริ่มต้นเมื่อใด",
+  "expected_keywords": ["ไม่ทราบ"] },
+
+{ "_type": "NEGATIVE — near miss, Thai history outside the period",
+  "question": "รัชกาลที่ 9 ขึ้นครองราชย์เมื่อใด",
+  "expected_keywords": ["ไม่ทราบ"] },
+
+{ "_type": "NEGATIVE — clearly outside",
+  "question": "ใครเป็นผู้ก่อตั้งองค์การสหประชาชาติ",
+  "expected_keywords": ["ไม่ทราบ"] },
+
+{ "_type": "NEGATIVE — clearly outside",
+  "question": "โทรศัพท์มือถือเครื่องแรกผลิตในปีใด",
+  "expected_keywords": ["ไม่ทราบ"] }
 ]
