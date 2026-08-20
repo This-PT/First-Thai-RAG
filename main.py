@@ -112,6 +112,7 @@ def generate_response(question, relevant_chunks):
                 "content": question,
             },
         ],
+        temperature=0,
     )
 
     answer = response.choices[0].message.content
