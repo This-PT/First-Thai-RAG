@@ -5,12 +5,14 @@ import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from main import query_documents, generate_response
+from main import query_documents, generate_response,query_bm25
 
 QUESTIONS_PATH = os.path.join(os.path.dirname(__file__), "questions.json")
 N_RESULTS = 10
 MAX_CHARS  = 1200
 OVERLAP    = 1
+Retriever_Vec = False
+
 results = []
 
 def contains(text, keywords):
@@ -30,51 +32,83 @@ def main():
     answer_hits = 0
     failures = []
     THRESHOLD = 0.75
-
+    n_results = 10
 
     for case in cases:
         question = case["question"]
         keywords = case["expected_keywords"]
 
-        chunks = query_documents(question, n_results=N_RESULTS)
+        if Retriever_Vec:
+            chunks = query_documents(question, n_results=n_results)
+        else:
+            chunks = query_bm25(question, n_results=n_results)
+
         joined = "\n".join(chunks)
+
+
         answer = generate_response(question, chunks)
 
-        retrieval_score = contains(joined,keywords)
+
+
+
+
+        # retrieval_score = contains(joined,keywords)
+        
+        gold = case.get("gold_snippet")
+        retrieval_score = None if gold is None else float(gold in joined)
         answer_score = contains(answer,keywords)
 
-        retrieval_pass = retrieval_score >= THRESHOLD
+
+        retrieval_pass = None if retrieval_score is None else retrieval_score >= THRESHOLD
         answer_pass = answer_score >= THRESHOLD
 
-        retrieval_total += retrieval_score
-        answer_total += answer_score
-        retrieval_hits += retrieval_pass
-        answer_hits += answer_pass
-
+        # dict
         results.append({
-            "question": question,
-            "expected": keywords,
-            "retrieval_score": retrieval_score,
-            "answer_score": answer_score,
-            "retrieval_pass": bool(retrieval_pass),
-            "answer_pass": bool(answer_pass),
-            "answer": answer,
-        })
-
-
-        status = "PASS" if answer_pass else ("RETRIEVED-ONLY" if retrieval_pass else "FAIL")
-        print(f"[{status}] r={retrieval_score:.2f} a={answer_score:.2f}  {question}")
-
-        if not answer_pass:
-            failures.append(
-                {
                     "question": question,
                     "expected": keywords,
                     "retrieval_score": retrieval_score,
-                    "answer_score" : answer_score,
+                    "answer_score": answer_score,
+                    "retrieval_pass": bool(retrieval_pass),
+                    "answer_pass": bool(answer_pass),
                     "answer": answer,
-                }
-            )
+                })
+
+
+    in_corpus = [r for r in results if r["retrieval_score"] is not None]
+    negatives = [r for r in results if r["retrieval_score"] is None]
+
+    retrieval_hits = sum(r["retrieval_pass"] for r in in_corpus)
+    answer_hits    = sum(r["answer_pass"]    for r in in_corpus)
+    refusals       = sum(r["answer_pass"]    for r in negatives)
+
+
+
+    print(f"in-corpus  retrieval {retrieval_hits}/{len(in_corpus)}")
+    print(f"in-corpus  answer    {answer_hits}/{len(in_corpus)}")
+    print(f"negatives  refusal   {refusals}/{len(negatives)}")
+
+    answer_mean = sum(r["answer_score"] for r in in_corpus) / len(in_corpus) if len(in_corpus) != 0 else 0
+    print("mean :",answer_mean)
+
+    r_str = " n/a" if retrieval_score is None else f"{retrieval_score:.2f}"
+    
+
+    if retrieval_score is None:
+        status = "REFUSED" if answer_pass else "HALLUCINATED"
+    else:
+        status = "PASS" if answer_pass else ("RETRIEVED-ONLY" if retrieval_pass else "FAIL")
+
+    print(f"[{status}] r={r_str} a={answer_score:.2f}  {question}")
+    if not answer_pass:
+        failures.append(
+            {
+                "question": question,
+                "expected": keywords,
+                "retrieval_score": retrieval_score,
+                "answer_score" : answer_score,
+                "answer": answer,
+            }
+        )
     # print("ans_score : ",answer_score)
     total = len(cases)
     print("\n" + "=" * 50)
@@ -82,9 +116,10 @@ def main():
     print(f"Answer accuracy:    {answer_hits}/{total} ({answer_hits / total:.2f})")
     print("=" * 50)
 
-    if failures:
-        for f in failures:
-            gap = f["retrieval_score"] - f["answer_score"]
+    failures = [r for r in in_corpus if not r["answer_pass"]]
+
+    for f in failures:
+        gap = f["retrieval_score"] - f["answer_score"]
         if f["retrieval_score"] < THRESHOLD:
             cause = "retrieval"
         elif gap > 0.2:
@@ -114,7 +149,7 @@ def main():
             "retrieval_hits": retrieval_hits,
             "retrieval_mean": retrieval_total / total,
             "answer_hits": answer_hits,
-            "answer_mean": answer_total / total,
+            "answer_mean": answer_mean,
         },
         "results": results,
         "failures": failures,

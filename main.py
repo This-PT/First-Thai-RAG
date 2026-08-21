@@ -7,6 +7,11 @@ import re
 import numpy as np
 from src.split_thai import split_thai
 import sys
+from rank_bm25 import BM25Okapi
+from pythainlp.tokenize import word_tokenize
+
+
+
 
 load_dotenv()
 
@@ -50,9 +55,6 @@ def get_openai_embedding(text,idx = None):
     embedding = response.data[0].embedding
     if idx is not None and idx % 100 == 0 :print("==== Generating embeddings... ====")
     return embedding
-
-
-
 def build_index(directory_path=directory_path):
 
     chunked_documents = []
@@ -74,9 +76,16 @@ def build_index(directory_path=directory_path):
         )
 
 
+_data      = collection.get()
+all_ids    = _data["ids"]
+all_chunks = _data["documents"]
+bm25 = BM25Okapi([word_tokenize(c, engine="newmm") for c in all_chunks])
 
 
-
+def query_bm25(question, n_results=10):
+    scores = bm25.get_scores(word_tokenize(question, engine="newmm"))
+    top = sorted(range(len(scores)), key=lambda i: -scores[i])[:n_results]
+    return [all_chunks[i] for i in top]
 
 
 def query_documents(question, n_results=10):
@@ -85,11 +94,13 @@ def query_documents(question, n_results=10):
     docs = results["documents"][0]      # [0] = first (only) query
     dists = results["distances"][0]
 
+
     for dist, text in zip(dists, docs):
         print(f"dist={dist:.3f} | {text[:200]}...")
     relevant_chunks = [doc for sublist in results["documents"] for doc in sublist]
     print("==== Returning relevant chunks ====")
     return relevant_chunks
+
 
 def generate_response(question, relevant_chunks):
     context = "\n\n".join(relevant_chunks)
@@ -118,6 +129,9 @@ def generate_response(question, relevant_chunks):
     answer = response.choices[0].message.content
     return answer
 
+Retriever_Vec = True
+n_results = 10
+
 
 
 def main():
@@ -135,7 +149,11 @@ def main():
             print('Usage: python main.py ask "your question"')
             return
         question = sys.argv[2]
-        chunks = query_documents(question)
+        # chunks = query_documents(question)
+        if Retriever_Vec:
+            chunks = query_documents(question, n_results=n_results)
+        else:
+            chunks = query_bm25(question, n_results=n_results)
         print("\n" + generate_response(question, chunks))
  
     else:

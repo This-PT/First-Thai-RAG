@@ -2,91 +2,115 @@
   {
     "_type": "fact — date, stated verbatim",
     "question": "เหตุการณ์ลอบปลงพระชนม์ที่ซาราเจโวเกิดขึ้นเมื่อใด",
-    "expected_keywords": ["28", "มิถุนายน"]
+    "expected_keywords": ["28", "มิถุนายน"],
+    "gold_snippet": "28 มิถุนายน 1914"
   },
   {
     "_type": "fact — named person",
     "question": "ใครเป็นผู้ลอบยิงมกุฎราชกุมารของออสเตรีย-ฮังการี",
-    "expected_keywords": ["ปรินซิป"]
+    "expected_keywords": ["ปรินซิป"],
+    "gold_snippet": "ถูกลอบยิงโดยปรินซิป"
   },
   {
     "_type": "fact — organization",
     "question": "ผู้ลงมือลอบปลงพระชนม์เป็นสมาชิกขององค์กรลับใด",
-    "expected_keywords": ["มือดำ"]
+    "expected_keywords": ["มือดำ"],
+    "gold_snippet": "องค์กรลับ"
   },
   {
     "_type": "fact — place",
     "question": "ซาราเจโวเป็นเมืองหลวงของจังหวัดใด",
-    "expected_keywords": ["บอสเนีย"]
+    "expected_keywords": ["บอสเนีย"],
+    "gold_snippet": "เมืองหลวงของจังหวัด"
   },
   {
     "_type": "list — requires the enumerated section",
     "question": "ปัจจัยพื้นฐาน 4 ประการที่นำไปสู่สงครามโลกครั้งที่ 1 มีอะไรบ้าง",
-    "expected_keywords": ["ชาตินิยม", "จักรวรรดินิยม", "ทหารนิยม", "พันธมิตร"]
+    "expected_keywords": ["ชาตินิยม", "จักรวรรดินิยม", "ทหารนิยม", "พันธมิตร"],
+    "gold_snippet": "ลัทธิทหารนิยม"
   },
   {
     "_type": "fact — year + members",
     "question": "ระบบพันธมิตรสามฝ่ายก่อตั้งขึ้นในปีใด และมีประเทศใดบ้าง",
-    "expected_keywords": ["1882", "อิตาลี"]
+    "expected_keywords": ["1882", "อิตาลี"],
+    "gold_snippet": "ระบบพันธมิตรสามฝ่าย"
   },
   {
     "_type": "paraphrase — asks using words not in the source text",
     "question": "ชาติใดที่แข่งขันกันสร้างกำลังทางเรือก่อนเกิดสงคราม",
-    "expected_keywords": ["อังกฤษ", "เยอรมนี"]
+    "expected_keywords": ["อังกฤษ", "เยอรมนี"],
+    "gold_snippet": "ราชนาวีอังกฤษและเยอรมัน"
   },
   {
     "_type": "multi-paragraph — chain of declarations spans several paragraphs",
     "question": "หลังรัสเซียประกาศระดมพล เยอรมนีทำอะไรต่อ และเมื่อใด",
-    "expected_keywords": ["1 สิงหาคม", "รัสเซีย"]
+    "expected_keywords": ["1 สิงหาคม", "รัสเซีย"],
+    "gold_snippet": "ประกาศสงครามกับรัสเซียในวันที่"
   },
   {
     "_type": "rare detail — mentioned once",
     "question": "แผนการสงครามของเยอรมนีที่กล่าวถึงในเอกสารมีชื่อว่าอะไร",
-    "expected_keywords": ["ชลีเฟน"]
+    "expected_keywords": ["ชลีเฟน"],
+    "gold_snippet": "ชลีเฟน"
   },
   {
     "_type": "rare detail — year deep in the text",
     "question": "ความเป็นกลางของเบลเยียมได้รับการค้ำประกันจากอังกฤษในปีใด",
-    "expected_keywords": ["1839"]
+    "expected_keywords": ["1839"],
+    "gold_snippet": "ค้ำประกันจากอังกฤษในปี"
   },
   {
     "_type": "cross-section — jumps from the WWI half to the Siam half",
     "question": "สยามประกาศสงครามเมื่อใด",
-    "expected_keywords": ["21", "กรกฎาคม"]
+    "expected_keywords": ["21", "กรกฎาคม"],
+    "gold_snippet": "21 กรกฎาคม 2460"
   },
   {
     "_type": "cross-section — Siam's opponents",
     "question": "สยามประกาศสงครามกับประเทศใดบ้าง",
-    "expected_keywords": ["เยอรมนี", "ออสเตรีย-ฮังการี"]
+    "expected_keywords": ["เยอรมนี", "ออสเตรีย-ฮังการี"],
+    "gold_snippet": "ประกาศสงครามกับเยอรมนีและออสเตรีย-ฮังการี"
   },
   {
     "_type": "rare detail — Siam section, single mention",
     "question": "รัชกาลที่ 6 ทรงศึกษาวิชาการทหารที่โรงเรียนใดในอังกฤษ",
-    "expected_keywords": ["แซนด์เฮิร์สต์"]
+    "expected_keywords": ["แซนด์เฮิร์สต์"],
+    "gold_snippet": "แซนด์เฮิร์สต์"
   },
   {
     "_type": "number — requires precision",
     "question": "เยอรมนีประกาศทำสงครามเรือดำน้ำแบบไม่จำกัดขอบเขตเมื่อใด",
-    "expected_keywords": ["1 กุมภาพันธ์", "1917"]
+    "expected_keywords": ["1 กุมภาพันธ์", "1917"],
+    "gold_snippet": "เรือดำน้ำแบบไม่จำกัดขอบเขต"
   },
   {
-    "_type": "NEGATIVE CASE — not in the corpus. PASS = the system refuses. Score by hand if the wording varies.",
+    "_type": "NEGATIVE — not in the corpus. PASS = the system refuses.",
     "question": "สงครามโลกครั้งที่ 2 สิ้นสุดลงเมื่อใด",
-    "expected_keywords": ["ไม่ทราบ"]
+    "expected_keywords": ["ไม่ทราบ"],
+    "gold_snippet": null
   },
-  { "_type": "NEGATIVE — near miss, same era different war",
-  "question": "สงครามเย็นเริ่มต้นเมื่อใด",
-  "expected_keywords": ["ไม่ทราบ"] },
-
-{ "_type": "NEGATIVE — near miss, Thai history outside the period",
-  "question": "รัชกาลที่ 9 ขึ้นครองราชย์เมื่อใด",
-  "expected_keywords": ["ไม่ทราบ"] },
-
-{ "_type": "NEGATIVE — clearly outside",
-  "question": "ใครเป็นผู้ก่อตั้งองค์การสหประชาชาติ",
-  "expected_keywords": ["ไม่ทราบ"] },
-
-{ "_type": "NEGATIVE — clearly outside",
-  "question": "โทรศัพท์มือถือเครื่องแรกผลิตในปีใด",
-  "expected_keywords": ["ไม่ทราบ"] }
+  {
+    "_type": "NEGATIVE — near miss, same era different war",
+    "question": "สงครามเย็นเริ่มต้นเมื่อใด",
+    "expected_keywords": ["ไม่ทราบ"],
+    "gold_snippet": null
+  },
+  {
+    "_type": "NEGATIVE — near miss, Thai history outside the period",
+    "question": "รัชกาลที่ 9 ขึ้นครองราชย์เมื่อใด",
+    "expected_keywords": ["ไม่ทราบ"],
+    "gold_snippet": null
+  },
+  {
+    "_type": "NEGATIVE — clearly outside",
+    "question": "ใครเป็นผู้ก่อตั้งองค์การสหประชาชาติ",
+    "expected_keywords": ["ไม่ทราบ"],
+    "gold_snippet": null
+  },
+  {
+    "_type": "NEGATIVE — clearly outside",
+    "question": "โทรศัพท์มือถือเครื่องแรกผลิตในปีใด",
+    "expected_keywords": ["ไม่ทราบ"],
+    "gold_snippet": null
+  }
 ]

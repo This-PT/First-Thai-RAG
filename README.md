@@ -4,6 +4,17 @@ A Retrieval-Augmented Generation (RAG) pipeline built from scratch for **Thai-la
 
 Most RAG tutorials assume English text. Thai breaks several of their assumptions — there are no spaces between words, no sentence-ending punctuation, and characters carry combining marks that must never be separated from their base. This project handles those cases explicitly.
 
+
+**Current results** — 19-question eval set (14 answerable, 5 not in the corpus):
+
+| retriever | retrieval | answer | refusal |
+|---|---|---|---|
+| vector (OpenAI embeddings) | 8/14 (57%) | 8/14 (57%) | 5/5 |
+| **BM25 (PyThaiNLP newmm)** | **13/14 (93%)** | **13/14 (93%)** | 5/5 |
+
+Corpus: 71,000 characters of Thai text about WWI and Siam's entry into it.
+
+
 ## Architecture
 
 ```
@@ -33,6 +44,16 @@ Thai .txt documents
 ## Keyword-based 
 evaluation is unreliable for Thai because register shifts (ราชาศัพท์) change vocabulary for the same fact — this motivated moving toward LLM-as-judge scoring.
 
+
+## How I measure it 
+
+the eval set has 19 questions. 14 have answers in corpus . 5 do not for testing the refuse of system instead of making something up.
+
+**Retrieval** is scored with a gold_snippet: a phrase from the sentence that actually answers the question. If that phrase is not in the retrieved chunks, retrieval failed.
+
+**Answers** are scored by keyword coverage: how many expected keywords appear in the answer, as a fraction.
+
+**Refusal** is scored separately, only on the 5 out-of-corpus questions. Correct = the answer contains ไม่ทราบ.
 
 
 
@@ -67,10 +88,19 @@ rmdir /s chroma_persistent_storage | for clearing old embedding
 
 ## Findings
 
-gpt-3.5-turbo produces malformed Thai. Early output contained broken Thai words. Checking the retrieved chunks showed they were clean, isolating the fault to generation rather than retrieval. Switching to gpt-4o-mini resolved it — and costs less.
+- **gpt-3.5-turbo produces malformed Thai** Early output contained broken Thai words. Checking the retrieved chunks showed they were clean, isolating the fault to generation rather than retrieval. Switching to gpt-4o-mini resolved it — and costs less.
 
+- **My first metric was lying to me** I used to score retrieval by checking if a keyword appeared anywhere in the 10 retrieved chunks. That reported 80%.
 
+**The problem** : the keyword can appear in a chunk about a different topic so that the answer of the question never retrived
 
+**fixed** : switching to gold_snippet and found that the honest number was 57%.
+
+- **One sentence answers three of my questions, and vector search never found it** 
+
+**The problem** : since one word can appear more than one time, the old vector search is not accurate in this case.
+
+**fixed** : Using BM25 , BM25 weights words by how rare they are. In my corpus:
 
 ## evaluate results
 
