@@ -169,13 +169,31 @@ Retrieval is nearly flat from 3 to 10 — the most diagnostic result here. The f
 
 
 
-overall best setup =  chunk_size = 1200 / overlaps = 1/N_RESULTS = 10
+overall best setup =  chunk_size = 1200 / overlaps = 1/N_RESULTS = 10 
 
+## Note: these numbers are not reliable
+
+On 2026-08-20 I found a big problem in my RAG, so I fixed it and tested three
+retrieval methods:
+
+- **vector search**
+- **BM25 search**
+- **hybrid search**
+
+Hybrid was the best, with `k=10` and BM25 weight `3.0`.
+
+| config | retrieval | answer |
+|---|---|---|
+| vector alone | 8/14 | 8/14 |
+| BM25 alone | 13/14 | 13/14 |
+| hybrid k=60 w=1 | 11/14 | 12/14 |
+| hybrid k=60 w=2 | 12/14 | 13/14 |
+| hybrid k=10 w=2 | 12/14 | 13/14 |
+| **hybrid k=10 w=3** | **13/14** | **14/14** |
 
 
 
 ### Update
 
-- **20/08/26 (fixed)** i found that my RAG had a big problem which is retrieval failure some . Since,retrieval_score is 1.0 but after i read all chunks i realize that i couldn't answer it either . So the score
-was lying.
+- **20/08/26 (fixed)** i found that my RAG had a big problem which is retrieval failure some . Since,retrieval_score is 1.0 but after i read all chunks i realize that i couldn't answer it either . So the score was lying.
 **The reason**: my score only checks if the keyword appears somewhere in the 10 chunks. If key words showed up in chunk about a different topic, so the score said 1.0 — but the sentence that really answers the question was never retrieved.

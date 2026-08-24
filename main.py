@@ -143,14 +143,18 @@ def bm25_idx(question,n = 20):
     return [all_ids[i]for i in top]
 
 
-def query_hybrid(question,n_results = 10 ,k = 10):
+def query_hybrid(question,n_results = 10 ,k = 10,w_bm25 = 3.0):
     scores = {}
-    for lst,weight in ((vector_idx(question),1.0),(bm25_idx(question),3.0)):
+    for lst,weight in ((vector_idx(question),1.0),(bm25_idx(question),w_bm25)):
         for rank,cid in enumerate(lst):
             scores[cid] = scores.get(cid, 0) + weight / (k + rank + 1)
     best = sorted(scores, key=scores.get, reverse=True)[:n_results]
     return [chunk_by_id[c] for c in best]
 
+
+def answer_question(question):
+    chunks = query_hybrid(question, n_results=10, k=10, w_bm25=3.0)
+    return generate_response(question, chunks)
 
 
 
