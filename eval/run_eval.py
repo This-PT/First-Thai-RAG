@@ -5,20 +5,18 @@ import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from main import query_documents, generate_response,query_bm25
+from main import query_documents, generate_response,query_bm25,query_hybrid
 
 QUESTIONS_PATH = os.path.join(os.path.dirname(__file__), "questions.json")
 N_RESULTS = 10
 MAX_CHARS  = 1200
 OVERLAP    = 1
-Retriever_Vec = False
+Retriever_type = 'both'
 
 results = []
 
 def contains(text, keywords):
     return sum(kw in text for kw in keywords)/len(keywords)
-
-
 
 
 
@@ -38,10 +36,13 @@ def main():
         question = case["question"]
         keywords = case["expected_keywords"]
 
-        if Retriever_Vec:
+        if Retriever_type == 'vec':
             chunks = query_documents(question, n_results=n_results)
-        else:
+        elif Retriever_type == 'bm25':
             chunks = query_bm25(question, n_results=n_results)
+        else :
+            chunks = query_hybrid(question, n_results=n_results)
+
 
         joined = "\n".join(chunks)
 
@@ -133,7 +134,7 @@ def main():
         print(f"  answer: {f['answer'][:200]}\n")
 
     os.makedirs(os.path.join(os.path.dirname(__file__), "reports"), exist_ok=True)
-    stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H%M")
+    stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H%M%S")
     report = {
         "config": {
             "n_results": N_RESULTS,

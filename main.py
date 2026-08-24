@@ -79,6 +79,7 @@ def build_index(directory_path=directory_path):
 _data      = collection.get()
 all_ids    = _data["ids"]
 all_chunks = _data["documents"]
+chunk_by_id = dict(zip(all_ids, all_chunks))
 bm25 = BM25Okapi([word_tokenize(c, engine="newmm") for c in all_chunks])
 
 
@@ -129,8 +130,27 @@ def generate_response(question, relevant_chunks):
     answer = response.choices[0].message.content
     return answer
 
-Retriever_Vec = True
+Retriever_type = 'both'
 n_results = 10
+
+def vector_idx(question,n = 20):
+    r = collection.query(query_texts=question,n_results=n)
+    return r['ids'][0]
+
+def bm25_idx(question,n = 20):
+    scores = bm25.get_scores(word_tokenize(question, engine="newmm"))
+    top = sorted(range(len(scores)),key= lambda i :-scores[i] )[:n]
+    return [all_ids[i]for i in top]
+
+
+def query_hybrid(question,n_results = 10 ,k = 10):
+    scores = {}
+    for lst,weight in ((vector_idx(question),1.0),(bm25_idx(question),3.0)):
+        for rank,cid in enumerate(lst):
+            scores[cid] = scores.get(cid, 0) + weight / (k + rank + 1)
+    best = sorted(scores, key=scores.get, reverse=True)[:n_results]
+    return [chunk_by_id[c] for c in best]
+
 
 
 
@@ -150,10 +170,14 @@ def main():
             return
         question = sys.argv[2]
         # chunks = query_documents(question)
-        if Retriever_Vec:
+        if Retriever_type == 'vec':
             chunks = query_documents(question, n_results=n_results)
-        else:
+        elif Retriever_type == 'bm25':
             chunks = query_bm25(question, n_results=n_results)
+        else:
+            chunks = query_hybrid(question, n_results=n_results)
+
+
         print("\n" + generate_response(question, chunks))
  
     else:

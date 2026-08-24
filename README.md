@@ -102,6 +102,24 @@ rmdir /s chroma_persistent_storage | for clearing old embedding
 
 **fixed** : Using BM25 , BM25 weights words by how rare they are. In my corpus:
 
+| term | appears in | IDF |
+|---|---|---|
+| ปรินซิป | 1 chunk of 60 | 4.094 |
+| บอสเนีย | 3 chunks | 2.996 |
+| สงคราม | 57 chunks | 0.051 |
+
+A word in 1 chunk of 60 is worth about 80× a word in 57 of them. That is exactly the signal embeddings average away.
+
+Result: retrieval 57% → 93%.
+
+
+- **My system did not refuse reliably**  The 5 out-of-corpus questions test hallucination
+
+**The problem** : Before I added an explicit grounding instruction, the model refused only 1 time in 3 — it answered a question about WWII from its own training memory, confidently and correctly, from a corpus that contains no WWII.
+
+**fixed** : Adding the instruction, after adding it the result is 5/5 refusals, every run.
+
+
 ## evaluate results
 
 
@@ -158,6 +176,6 @@ overall best setup =  chunk_size = 1200 / overlaps = 1/N_RESULTS = 10
 
 ### Update
 
-- **20/08/26** i found that my RAG had a big problem which is retrieval failure some . Since,retrieval_score is 1.0 but after i read all chunks i realize that i couldn't answer it either . So the score
+- **20/08/26 (fixed)** i found that my RAG had a big problem which is retrieval failure some . Since,retrieval_score is 1.0 but after i read all chunks i realize that i couldn't answer it either . So the score
 was lying.
 **The reason**: my score only checks if the keyword appears somewhere in the 10 chunks. If key words showed up in chunk about a different topic, so the score said 1.0 — but the sentence that really answers the question was never retrieved.
