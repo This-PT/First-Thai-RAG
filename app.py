@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from main import answer_question
 from fastapi.responses import HTMLResponse
+import time, logging
 
 app = FastAPI()
 
@@ -48,3 +49,11 @@ async function ask(){
 @app.get("/", response_class=HTMLResponse)
 def home():
     return PAGE
+
+@app.middleware("http")
+async def timing(request, call_next):
+    start = time.perf_counter()
+    response = await call_next(request)
+    ms = (time.perf_counter() - start) * 1000
+    print(f"{request.url.path} {ms:.0f}ms")
+    return response

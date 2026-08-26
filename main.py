@@ -10,7 +10,7 @@ import sys
 from rank_bm25 import BM25Okapi
 from pythainlp.tokenize import word_tokenize
 from fastapi import FastAPI
-
+import time
 
 
 load_dotenv()
@@ -104,6 +104,8 @@ def query_documents(question, n_results=10):
     print("==== Returning relevant chunks ====")
     return relevant_chunks
 
+PRICE_IN  = 0.15 / 1_000_000     # $ per input token  — verify on the pricing page
+PRICE_OUT = 0.60 / 1_000_000 
 
 def generate_response(question, relevant_chunks):
     context = "\n\n".join(relevant_chunks)
@@ -128,12 +130,14 @@ def generate_response(question, relevant_chunks):
         ],
         temperature=0,
     )
-
+    u = response.usage 
+    cost = u.prompt_tokens * PRICE_IN + u.completion_tokens * PRICE_OUT
+    print(f"in={u.prompt_tokens} out={u.completion_tokens} cost=${cost:.6f}")
     answer = response.choices[0].message.content
     return answer
 
 Retriever_type = 'both'
-n_results = 10
+n_results = 15
 
 def vector_idx(question,n = 20):
     r = collection.query(query_texts=question,n_results=n)
@@ -153,11 +157,14 @@ def query_hybrid(question,n_results = 10 ,k = 10,w_bm25 = 3.0):
     best = sorted(scores, key=scores.get, reverse=True)[:n_results]
     return [chunk_by_id[c] for c in best]
 
-
 def answer_question(question):
+    t0 = time.perf_counter()
     chunks = query_hybrid(question, n_results=10, k=10, w_bm25=3.0)
-    return generate_response(question, chunks)
-
+    t1 = time.perf_counter()
+    answer = generate_response(question, chunks)
+    t2 = time.perf_counter()
+    print(f"retrieve {(t1-t0)*1000:.0f}ms  generate {(t2-t1)*1000:.0f}ms")
+    return answer
 
 
 def main():
@@ -191,8 +198,8 @@ def main():
  
 app = FastAPI()
 if __name__ == "__main__":
-    import os, uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
+    # import os, uvicorn
+    # uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
     main()
     
 
