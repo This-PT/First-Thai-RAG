@@ -9,7 +9,7 @@ from src.split_thai import split_thai
 import sys
 from rank_bm25 import BM25Okapi
 from pythainlp.tokenize import word_tokenize
-
+from fastapi import FastAPI
 
 
 
@@ -75,6 +75,8 @@ def build_index(directory_path=directory_path):
             ids=[doc["id"]], documents=[doc["text"]], embeddings=[doc["embedding"]]
         )
 
+if collection.count() == 0:
+    build_index()
 
 _data      = collection.get()
 all_ids    = _data["ids"]
@@ -187,10 +189,12 @@ def main():
     else:
         print(f"Unknown command: {command}")
  
- 
+app = FastAPI()
 if __name__ == "__main__":
+    import os, uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
     main()
- 
+    
 
 
 
