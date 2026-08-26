@@ -34,6 +34,21 @@ collection = chroma_client.get_or_create_collection(
 
 client = OpenAI(api_key=openai_key)
 
+
+typhoon_client = OpenAI(
+    api_key=os.getenv("TYPHOON_API_KEY"),
+    base_url="https://api.opentyphoon.ai/v1",   # confirm in their docs
+)
+
+
+
+
+
+
+
+
+
+
 def load_documents_from_directory(directory_path):
     print("==== Loading documents from directory ====")
     documents = []
@@ -106,18 +121,23 @@ def query_documents(question, n_results=10):
 
 PRICE_IN  = 0.15 / 1_000_000     # $ per input token  — verify on the pricing page
 PRICE_OUT = 0.60 / 1_000_000 
+GENERATOR = "typhoon"
+
+if GENERATOR == "typhoon":
+    c, model = typhoon_client, "typhoon-v2.5-30b-a3b-instruct"
+else:
+    c, model = client, "gpt-4o-mini"
 
 def generate_response(question, relevant_chunks):
     context = "\n\n".join(relevant_chunks)
     prompt = (
-        "You are an assistant for question-answering tasks. Use the following pieces of "
-        "retrieved context to answer the question. If you don't know the answer, say that you "
-        "don't know. Use three sentences maximum and keep the answer concise."
-        "\n\nContext:\n" + context + "\n\nQuestion:\n" + question +"ตอบจากข้อความที่ให้มาเท่านั้น ห้ามใช้ความรู้ภายนอกถ้าข้อความมีข้อมูลที่ตอบคำถามได้ ให้ตอบ แม้ถ้อยคำในคำถามกับในข้อความจะไม่ตรงกันทุกคำตอบว่า \"ไม่ทราบ\" เฉพาะเมื่อข้อความที่ให้มาไม่มีข้อมูลนั้นจริง ๆ"
+       'ตอบจากข้อความที่ให้มาเท่านั้น ห้ามใช้ความรู้ภายนอก\n'
+    'ถ้าข้อความมีข้อมูลที่ตอบคำถามได้ ให้ตอบ แม้ถ้อยคำจะไม่ตรงกันทุกคำ\n'
+    'ถ้าข้อความที่ให้มาไม่มีข้อมูลนั้น ให้ตอบว่า "ไม่ทราบ" เท่านั้น\n\n'
+    'Context:\n' + context
     )
-
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
+    response = c.chat.completions.create(
+        model=model,
         messages=[
             {
                 "role": "system",
@@ -131,13 +151,14 @@ def generate_response(question, relevant_chunks):
         temperature=0,
     )
     u = response.usage 
-    cost = u.prompt_tokens * PRICE_IN + u.completion_tokens * PRICE_OUT
-    print(f"in={u.prompt_tokens} out={u.completion_tokens} cost=${cost:.6f}")
+    if(GENERATOR == "GPT"):
+        cost = u.prompt_tokens * PRICE_IN + u.completion_tokens * PRICE_OUT
+        print(f"in={u.prompt_tokens} out={u.completion_tokens} cost=${cost:.6f}")
     answer = response.choices[0].message.content
     return answer
 
 Retriever_type = 'both'
-n_results = 15
+n_results = 10
 
 def vector_idx(question,n = 20):
     r = collection.query(query_texts=question,n_results=n)
@@ -196,9 +217,7 @@ def main():
     else:
         print(f"Unknown command: {command}")
  
-app = FastAPI()
 if __name__ == "__main__":
-    # import os, uvicorn
     # uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
     main()
     

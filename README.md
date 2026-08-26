@@ -192,6 +192,64 @@ Hybrid was the best, with `k=10` and BM25 weight `3.0`.
 | **hybrid k=10 w=3** | **13/14** | **14/14** |
 
 
+### Cost vs accuracy (hybrid, k=10, BM25 weight 3)
+
+| n_results | retrieval | answer | tokens in | cost / query | cost / 1,000 |
+|---|---|---|---|---|---|
+| 3 | 10/14 (71%) | 11/14 (79%) | 1,623 | $0.000260 | $0.26 |
+| **5** | **12/14 (86%)** | **13/14 (93%)** | **2,488** | **$0.000389** | **$0.39** |
+| 10 | 12/14 (86%) | 14/14 (100%) | 4,595 | $0.000706 | $0.71 |
+| 15 | 13/14 (93%) | 14/14 (100%) | 6,481 | $0.000989 | $0.99 |
+
+Prices: gpt-4o-mini, $0.15 / 1M input tokens and $0.60 / 1M output tokens
+(checked 2026-08-21). Output was ~27 tokens in every configuration, so cost is
+almost entirely retrieved context.
+
+**Going from 5 to 10 chunks buys one question and costs 81% more.** With 14
+answerable questions, one question is 7.1% — inside the noise of this eval set.
+The cost difference is not. So `n_results=5` is the better operating point until
+the eval set is large enough to tell 13 from 14 apart.
+
+`n_results=15` retrieved one more correct chunk but answered no more questions.
+The extra context was pure cost.
+
+
+### Model comparison
+
+Hybrid retrieval (k=10, BM25 weight 3, n_results=10). Only the generator changed,
+so retrieval is identical by construction.
+
+| model | retrieval | answer | refusal | tokens in/out | cost / query |
+|---|---|---|---|---|---|
+| gpt-4o-mini | 12/14 | 14/14 | 5/5 | 4,595 / 28 | $0.000706 |
+| typhoon-v2.5-30b-a3b-instruct | 12/14 | 14/14 | 5/5 | ? / ? | free tier |
+
+Typhoon is hosted by SCB 10X with an OpenAI-compatible API, so switching models
+was a client and a model name — no other code changed.
+
+- **Prompts are not portable between models.**
+
+  **The problem**: my first prompt put the Thai grounding rule at the end, glued
+  onto the question with no separator, and sent the question twice — once inside
+  the system prompt and once as the user message. gpt-4o-mini refused 5/5
+  out-of-corpus questions with it. Typhoon refused only 2/5, and answered the
+  other 3 from its own knowledge.
+
+  **Fixed**: restructuring the prompt — grounding rule first, on its own lines,
+  question only in the user message — with no change to the wording of the rule.
+
+  | model | prompt | refusal |
+  |---|---|---|
+  | gpt-4o-mini | messy | 5/5 |
+  | typhoon-v2.5-30b | messy | **2/5** |
+  | typhoon-v2.5-30b | clean | **5/5** |
+  | gpt-4o-mini | clean | 5/5 |
+
+  The prompt was always defective. gpt-4o-mini was absorbing it, so the defect was
+  invisible until I swapped models. A prompt that works on one model is not
+  evidence that it works — it may only be evidence that the model is tolerant.
+
+
 
 ### Update
 

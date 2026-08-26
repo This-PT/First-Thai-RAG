@@ -140,7 +140,7 @@ def main():
             "n_results": N_RESULTS,
             "threshold": THRESHOLD,
             "metric": "keyword coverage",
-            "model": "gpt-4o-mini",
+            "model": "typhoon",
             "temperature": 0,
             "embedding_model": "text-embedding-3-small",
             "max_chars": MAX_CHARS,
