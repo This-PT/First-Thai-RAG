@@ -191,6 +191,17 @@ Hybrid was the best, with `k=10` and BM25 weight `3.0`.
 | hybrid k=10 w=2 | 12/14 | 13/14 |
 | **hybrid k=10 w=3** | **13/14** | **14/14** |
 
+**However**
+My first eval set had 14 answerable questions, so one question was 7%. On that set hybrid retrieval beat BM25 by one question and I chose hybrid. On 32 questions the difference vanished — hybrid 30/32, BM25 31/32 — while hybrid costs ~690ms more per query for the embedding call. The small eval set led me to ship a slower system for a difference that wasn't real.
+
+
+| retriever | retrieval | answer | refusal | retrieval latency |
+|---|---|---|---|---|
+| vector (OpenAI embeddings) | 21/32 (66%) | 23/32 (72%) | 8/8 | ~690ms |
+| **BM25 (PyThaiNLP newmm)** | **31/32 (97%)** | **31/32 (97%)** | **8/8** | **~0ms** |
+| hybrid (RRF, k=10, BM25 weight 3) | 30/32 (94%) | 31/32 (97%) | 8/8 | ~690ms |
+
+**BM25** alone is now the **best option**. It matches hybrid on answers, edges it on retrieval, costs no embedding call, and adds no latency.
 
 ### Cost vs accuracy (hybrid, k=10, BM25 weight 3)
 
@@ -249,6 +260,13 @@ was a client and a model name — no other code changed.
   invisible until I swapped models. A prompt that works on one model is not
   evidence that it works — it may only be evidence that the model is tolerant.
 
+
+## Ping & Latency
+
+| environment | warm mean | warm max | cold start |
+|---|---|---|---|
+| local | 1.3s | 1.5s | 3.2s |
+| Render (free tier) | 1.4s | 1.7s | 3.0s |
 
 
 ### Update

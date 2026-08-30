@@ -1,0 +1,495 @@
+{
+  "config": {
+    "n_results": 10,
+    "threshold": 0.75,
+    "metric": "keyword coverage",
+    "model": "typhoon",
+    "temperature": 0,
+    "embedding_model": "text-embedding-3-small",
+    "max_chars": 1200,
+    "overlap_paras": 1
+  },
+  "summary": {
+    "retrieval_hits": 30,
+    "retrieval_mean": 0.0,
+    "answer_hits": 31,
+    "answer_mean": 0.9765625
+  },
+  "results": [
+    {
+      "question": "เหตุการณ์ลอบปลงพระชนม์ที่ซาราเจโวเกิดขึ้นเมื่อใด",
+      "expected": [
+        "28",
+        "มิถุนายน"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "เหตุการณ์ลอบปลงพระชนม์ที่ซาราเจโวเกิดขึ้นในวันที่ 28 มิถุนายน 1914"
+    },
+    {
+      "question": "ใครเป็นผู้ลอบยิงมกุฎราชกุมารของออสเตรีย-ฮังการี",
+      "expected": [
+        "ปรินซิป"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ผู้ลอบยิงมกุฎราชกุมารของออสเตรีย-ฮังการีคือ ปรินซิป (Gavrilo Princip) ซึ่งเป็นสมาชิกขององค์กรลับ \"มือดำ\" (The Black Hand) อันเป็นขบวนการชาตินิยมของเซอร์เบีย"
+    },
+    {
+      "question": "ผู้ลงมือลอบปลงพระชนม์เป็นสมาชิกขององค์กรลับใด",
+      "expected": [
+        "มือดำ"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ผู้ลงมือลอบปลงพระชนม์เป็นสมาชิกขององค์กรลับ \"มือดำ\" (The Black Hand)"
+    },
+    {
+      "question": "ซาราเจโวเป็นเมืองหลวงของจังหวัดใด",
+      "expected": [
+        "บอสเนีย"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ซาราเจโวเป็นเมืองหลวงของจังหวัดบอสเนีย-เฮอร์เซโกวีนา"
+    },
+    {
+      "question": "ปัจจัยพื้นฐาน 4 ประการที่นำไปสู่สงครามโลกครั้งที่ 1 มีอะไรบ้าง",
+      "expected": [
+        "ชาตินิยม",
+        "จักรวรรดินิยม",
+        "ทหารนิยม",
+        "พันธมิตร"
+      ],
+      "retrieval_score": 0.0,
+      "answer_score": 0.75,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "ปัจจัยพื้นฐาน 4 ประการที่นำไปสู่สงครามโลกครั้งที่ 1 ได้แก่\n\n1) ลัทธิชาตินิยม (Nationalism)\n2) ลัทธิจักรวรรดินิยม (Imperialism)\n3) ระบบพันธมิตร (Alliances)\n4) ความขัดแย้งภายในและภายนอก (ไม่ระบุในข้อความ)"
+    },
+    {
+      "question": "ระบบพันธมิตรสามฝ่ายก่อตั้งขึ้นในปีใด และมีประเทศใดบ้าง",
+      "expected": [
+        "1882",
+        "อิตาลี"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ระบบพันธมิตรสามฝ่ายก่อตั้งขึ้นในปี 1882 โดยมีประเทศเยอรมนี ออสเตรียฮังการี และอิตาลี"
+    },
+    {
+      "question": "ชาติใดที่แข่งขันกันสร้างกำลังทางเรือก่อนเกิดสงคราม",
+      "expected": [
+        "อังกฤษ",
+        "เยอรมนี"
+      ],
+      "retrieval_score": 0.0,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "อังกฤษและเยอรมนีเป็นชาติที่แข่งขันกันสร้างกำลังทางเรือก่อนเกิดสงคราม"
+    },
+    {
+      "question": "หลังรัสเซียประกาศระดมพล เยอรมนีทำอะไรต่อ และเมื่อใด",
+      "expected": [
+        "1 สิงหาคม",
+        "รัสเซีย"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "หลังรัสเซียประกาศระดมพล เยอรมนีจึงยื่นคำขาดให้รัสเซียหยุดการกระทำดังกล่าว แต่รัสเซียไม่ตอบรับ คำขาดนี้ทำให้รัฐบาลเยอรมันประกาศระดมพลในวันที่ 1 สิงหาคม 1914 และในวันเดียวกันนั้น เยอรมนีก็ประกาศสงครามกับรัสเซียด้วย"
+    },
+    {
+      "question": "แผนการสงครามของเยอรมนีที่กล่าวถึงในเอกสารมีชื่อว่าอะไร",
+      "expected": [
+        "ชลีเฟน"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "แผนการสงครามของเยอรมนีที่กล่าวถึงในเอกสารมีชื่อว่า \"แผนชลีเฟน\" (The Schlieffen Plan)"
+    },
+    {
+      "question": "ความเป็นกลางของเบลเยียมได้รับการค้ำประกันจากอังกฤษในปีใด",
+      "expected": [
+        "1839"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ความเป็นกลางของเบลเยียมได้รับการค้ำประกันจากอังกฤษในปี 1839"
+    },
+    {
+      "question": "สยามประกาศสงครามเมื่อใด",
+      "expected": [
+        "22",
+        "กรกฎาคม"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "สยามประกาศสงครามกับเยอรมนีและออสเตรีย-ฮังการีในวันที่ 22 กรกฎาคม 2460 (ค.ศ. 1917)"
+    },
+    {
+      "question": "สยามประกาศสงครามกับประเทศใดบ้าง",
+      "expected": [
+        "เยอรมนี",
+        "ออสเตรีย-ฮังการี"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "สยามประกาศสงครามกับเยอรมนีและออสเตรีย-ฮังการี"
+    },
+    {
+      "question": "รัชกาลที่ 6 ทรงศึกษาวิชาการทหารที่โรงเรียนใดในอังกฤษ",
+      "expected": [
+        "แซนด์เฮิร์สต์"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "รัชกาลที่ 6 ทรงศึกษาวิชาการทหารที่โรงเรียนนายร้อยทหารบกแซนด์เฮิร์สต์ (Sandhurst) ในอังกฤษ"
+    },
+    {
+      "question": "เยอรมนีประกาศทำสงครามเรือดำน้ำแบบไม่จำกัดขอบเขตเมื่อใด",
+      "expected": [
+        "1 กุมภาพันธ์",
+        "1917"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "เยอรมนีประกาศทำสงครามเรือดำน้ำแบบไม่จำกัดขอบเขตอย่างเป็นทางการในวันที่ 1 กุมภาพันธ์ 1917"
+    },
+    {
+      "question": "สงครามโลกครั้งที่ 2 สิ้นสุดลงเมื่อใด",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "สงครามเย็นเริ่มต้นเมื่อใด",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "รัชกาลที่ 9 ขึ้นครองราชย์เมื่อใด",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "ใครเป็นผู้ก่อตั้งองค์การสหประชาชาติ",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "โทรศัพท์มือถือเครื่องแรกผลิตในปีใด",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "รัสเซียประกาศระดมพลใหญ่เมื่อใด",
+      "expected": [
+        "30",
+        "กรกฎาคม"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "รัสเซียประกาศระดมพลใหญ่ในวันที่ 30 กรกฎาคม 1914"
+    },
+    {
+      "question": "จักรวรรดิเยอรมันประกาศหยุดยิงเมื่อใด",
+      "expected": [
+        "11",
+        "พฤศจิกายน"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "จักรวรรดิเยอรมันประกาศหยุดยิงในวันที่ 11 พฤศจิกายน 1918"
+    },
+    {
+      "question": "จักรวรรดิใดบ้างที่ล่มสลายหลังสงครามโลกครั้งที่ 1",
+      "expected": [
+        "เยอรมัน",
+        "ออสเตรีย-ฮังการี",
+        "รัสเซีย",
+        "ออตโตมัน"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "จักรวรรดิที่ล่มสลายหลังสงครามโลกครั้งที่ 1 ได้แก่ จักรวรรดิเยอรมัน, จักรวรรดิออสเตรีย-ฮังการี, จักรวรรดิรัสเซีย และจักรวรรดิออตโตมัน"
+    },
+    {
+      "question": "องค์กรระดับโลกใดถูกจัดตั้งขึ้นหลังสงครามโลกครั้งที่ 1",
+      "expected": [
+        "สันนิบาตชาติ"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "องค์กรระดับโลกที่ถูกจัดตั้งขึ้นหลังสงครามโลกครั้งที่ 1 คือ \"สันนิบาตชาติ\" (The League of Nations)"
+    },
+    {
+      "question": "มีประชาชนถูกระดมเข้าสู่กองทัพในสงครามโลกครั้งที่ 1 ประมาณกี่คน",
+      "expected": [
+        "70",
+        "ล้าน"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ประชาชนประมาณ 70 ล้านคนถูกระดมเข้าสู่กองทัพในสงครามโลกครั้งที่ 1 ซึ่งในจำนวนนี้เป็นชาวยุโรปมากถึง 60 ล้านคน"
+    },
+    {
+      "question": "ความสูญเสียทางทหารของทั้งสองฝ่ายรวมกันมีจำนวนเท่าใด",
+      "expected": [
+        "38.8",
+        "ล้าน"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ความสูญเสียทางทหารของทั้งสองฝ่ายรวมกันมีจำนวนมากถึง 38.8 ล้านนาย"
+    },
+    {
+      "question": "ฝ่ายสัมพันธมิตรใช้งบประมาณทางทหารในสงครามเท่าใด",
+      "expected": [
+        "58",
+        "พันล้าน"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ฝ่ายสัมพันธมิตรใช้งบทางทหารสูงมากถึง 58 พันล้านเหรียญสหรัฐ (คิดเปรียบเทียบมูลค่าเงินดอลลาร์สหรัฐปี 1913)"
+    },
+    {
+      "question": "ประเทศใดในฝ่ายมหาอำนาจกลางประกาศยอมแพ้เป็นประเทศแรก",
+      "expected": [
+        "บัลแกเรีย"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "บัลแกเรียเป็นประเทศแรกที่ประกาศยอมแพ้ในวันที่ 29 กันยายน 1918"
+    },
+    {
+      "question": "ทหารคนสุดท้ายที่เสียชีวิตก่อนการหยุดยิงมีชื่อว่าอะไร",
+      "expected": [
+        "Price",
+        "Gunther"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 0.5,
+      "retrieval_pass": true,
+      "answer_pass": false,
+      "answer": "ทหารคนสุดท้ายที่เสียชีวิตก่อนการหยุดยิงคือ พลทหาร Henry Gunther (อเมริกัน) ถูกทหารเยอรมันยิงเสียชีวิตเวลา 10.59 น."
+    },
+    {
+      "question": "ใครเป็นผู้เรียกสงครามนี้ว่า \"สงครามโลกครั้งที่หนึ่ง\" เป็นคนแรก",
+      "expected": [
+        "Haeckel"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "คำเรียกว่า \"สงครามโลกครั้งที่ 1\" มาจาก Ernst Haeckel นักปรัชญาชาวเยอรมัน ที่กล่าวไว้ในเดือนกันยายน 1914 ว่า \"สงครามยุโรปได้กลายเป็นสงครามโลกครั้งที่หนึ่งเต็มตามความหมายแล้ว\""
+    },
+    {
+      "question": "สยามส่งกองทหารบกรถยนต์ไปร่วมสงครามประมาณกี่นาย",
+      "expected": [
+        "850"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "สยามส่งกองทหารบกรถยนต์ประมาณ 850 นายไปร่วมสงคราม"
+    },
+    {
+      "question": "กองทหารอาสาของสยามออกเดินทางจากสยามเมื่อใด",
+      "expected": [
+        "15",
+        "มิถุนายน"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "กองทหารอาสาของสยามออกเดินทางจากสยามในวันที่ 15 มิถุนายน 1918 (พ.ศ. 2461)"
+    },
+    {
+      "question": "อนุสาวรีย์ทหารอาสาสงครามโลกครั้งที่ 1 ตั้งอยู่ที่ใด",
+      "expected": [
+        "สนามหลวง"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "อนุสาวรีย์ทหารอาสาในสงครามโลกครั้งที่ 1 ตั้งอยู่ตรงหัวมุมสนามหลวงใกล้กับโรงละครแห่งชาติ หรือที่รู้จักกันว่า \"วงเวียน 22 กรกฎาคม\""
+    },
+    {
+      "question": "วันที่ 28 มิถุนายน เป็นวันครบรอบการรบใดของนักชาตินิยมเซอร์เบีย",
+      "expected": [
+        "โคโซโว",
+        "1389"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "วันที่ 28 มิถุนายน เป็นวันครบรอบ \"การรบที่โคโซโว\" ในปี 1389 อันเป็นสัญลักษณ์ของการต่อสู้ของขบวนการชาตินิยมเซอร์เบีย"
+    },
+    {
+      "question": "รัชกาลที่ 6 เสด็จไปศึกษาที่อังกฤษตั้งแต่พระชนมายุเท่าใด",
+      "expected": [
+        "13"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "รัชกาลที่ 6 เสด็จไปศึกษาที่อังกฤษตั้งแต่พระชนมายุได้ 13 พรรษา"
+    },
+    {
+      "question": "สยามแก้ไขสนธิสัญญากับสหรัฐอเมริกาสำเร็จในปีใด",
+      "expected": [
+        "2463"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "สยามแก้ไขสนธิสัญญากับสหรัฐอเมริกาสำเร็จในปี พ.ศ. 2463"
+    },
+    {
+      "question": "เยอรมนีให้สัญญาสนับสนุนออสเตรีย-ฮังการีอย่างไม่มีเงื่อนไข เรียกนโยบายนี้ว่าอะไร",
+      "expected": [
+        "เช็คเปล่า"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "เรียกนโยบายนี้ว่า \"เช็คเปล่า\" (blank cheque)"
+    },
+    {
+      "question": "รัสปูตินเกิดอะไรขึ้นหลังเหตุการณ์ลอบปลงพระชนม์ที่ซาราเจโว 2 สัปดาห์",
+      "expected": [
+        "แทง"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "หลังเหตุการณ์ลอบปลงพระชนม์ที่ซาราเจโว 2 สัปดาห์ รัสปูตินถูกผู้หญิงคนหนึ่งแทงที่ช่องท้องและไปพักฟื้นในโรงพยาบาลในไซบีเรีย เขาพยายามส่งโทรเลขหาพระเจ้าซาร์ไม่ให้นำรัสเซียเข้าสู่สงคราม แต่เขาก็อยู่ไกลเกินไปจากการจะมีอิทธิพลต่อการตัดสินใจของราชสำนักในขณะนั้น"
+    },
+    {
+      "question": "สนธิสัญญาแวร์ซายลงนามเมื่อวันที่เท่าใด",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "การปฏิวัติสยาม พ.ศ. 2475 เกิดขึ้นเพราะอะไร",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ"
+    },
+    {
+      "question": "อินเทอร์เน็ตถูกประดิษฐ์ขึ้นในปีใด",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ"
+    }
+  ],
+  "failures": [
+    {
+      "question": "ทหารคนสุดท้ายที่เสียชีวิตก่อนการหยุดยิงมีชื่อว่าอะไร",
+      "expected": [
+        "Price",
+        "Gunther"
+      ],
+      "retrieval_score": 1.0,
+      "answer_score": 0.5,
+      "retrieval_pass": true,
+      "answer_pass": false,
+      "answer": "ทหารคนสุดท้ายที่เสียชีวิตก่อนการหยุดยิงคือ พลทหาร Henry Gunther (อเมริกัน) ถูกทหารเยอรมันยิงเสียชีวิตเวลา 10.59 น."
+    }
+  ]
+}

@@ -121,9 +121,9 @@ def query_documents(question, n_results=10):
 
 PRICE_IN  = 0.15 / 1_000_000     # $ per input token  — verify on the pricing page
 PRICE_OUT = 0.60 / 1_000_000 
-GENERATOR = "typhoon"
+GENERATOR = "GPT"
 
-if GENERATOR == "GPT":
+if GENERATOR == "typhoon":
     c, model = typhoon_client, "typhoon-v2.5-30b-a3b-instruct"
 else:
     c, model = client, "gpt-4o-mini"

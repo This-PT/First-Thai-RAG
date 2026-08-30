@@ -2,115 +2,342 @@
   {
     "_type": "fact — date, stated verbatim",
     "question": "เหตุการณ์ลอบปลงพระชนม์ที่ซาราเจโวเกิดขึ้นเมื่อใด",
-    "expected_keywords": ["28", "มิถุนายน"],
+    "expected_keywords": [
+      "28",
+      "มิถุนายน"
+    ],
     "gold_snippet": "28 มิถุนายน 1914"
   },
   {
     "_type": "fact — named person",
     "question": "ใครเป็นผู้ลอบยิงมกุฎราชกุมารของออสเตรีย-ฮังการี",
-    "expected_keywords": ["ปรินซิป"],
+    "expected_keywords": [
+      "ปรินซิป"
+    ],
     "gold_snippet": "ถูกลอบยิงโดยปรินซิป"
   },
   {
     "_type": "fact — organization",
     "question": "ผู้ลงมือลอบปลงพระชนม์เป็นสมาชิกขององค์กรลับใด",
-    "expected_keywords": ["มือดำ"],
+    "expected_keywords": [
+      "มือดำ"
+    ],
     "gold_snippet": "องค์กรลับ"
   },
   {
     "_type": "fact — place",
     "question": "ซาราเจโวเป็นเมืองหลวงของจังหวัดใด",
-    "expected_keywords": ["บอสเนีย"],
+    "expected_keywords": [
+      "บอสเนีย"
+    ],
     "gold_snippet": "เมืองหลวงของจังหวัด"
   },
   {
     "_type": "list — requires the enumerated section",
     "question": "ปัจจัยพื้นฐาน 4 ประการที่นำไปสู่สงครามโลกครั้งที่ 1 มีอะไรบ้าง",
-    "expected_keywords": ["ชาตินิยม", "จักรวรรดินิยม", "ทหารนิยม", "พันธมิตร"],
+    "expected_keywords": [
+      "ชาตินิยม",
+      "จักรวรรดินิยม",
+      "ทหารนิยม",
+      "พันธมิตร"
+    ],
     "gold_snippet": "ลัทธิทหารนิยม"
   },
   {
     "_type": "fact — year + members",
     "question": "ระบบพันธมิตรสามฝ่ายก่อตั้งขึ้นในปีใด และมีประเทศใดบ้าง",
-    "expected_keywords": ["1882", "อิตาลี"],
+    "expected_keywords": [
+      "1882",
+      "อิตาลี"
+    ],
     "gold_snippet": "ระบบพันธมิตรสามฝ่าย"
   },
   {
     "_type": "paraphrase — asks using words not in the source text",
     "question": "ชาติใดที่แข่งขันกันสร้างกำลังทางเรือก่อนเกิดสงคราม",
-    "expected_keywords": ["อังกฤษ", "เยอรมนี"],
+    "expected_keywords": [
+      "อังกฤษ",
+      "เยอรมนี"
+    ],
     "gold_snippet": "ราชนาวีอังกฤษและเยอรมัน"
   },
   {
     "_type": "multi-paragraph — chain of declarations spans several paragraphs",
     "question": "หลังรัสเซียประกาศระดมพล เยอรมนีทำอะไรต่อ และเมื่อใด",
-    "expected_keywords": ["1 สิงหาคม", "รัสเซีย"],
+    "expected_keywords": [
+      "1 สิงหาคม",
+      "รัสเซีย"
+    ],
     "gold_snippet": "ประกาศสงครามกับรัสเซียในวันที่"
   },
   {
     "_type": "rare detail — mentioned once",
     "question": "แผนการสงครามของเยอรมนีที่กล่าวถึงในเอกสารมีชื่อว่าอะไร",
-    "expected_keywords": ["ชลีเฟน"],
+    "expected_keywords": [
+      "ชลีเฟน"
+    ],
     "gold_snippet": "ชลีเฟน"
   },
   {
     "_type": "rare detail — year deep in the text",
     "question": "ความเป็นกลางของเบลเยียมได้รับการค้ำประกันจากอังกฤษในปีใด",
-    "expected_keywords": ["1839"],
+    "expected_keywords": [
+      "1839"
+    ],
     "gold_snippet": "ค้ำประกันจากอังกฤษในปี"
   },
   {
     "_type": "cross-section — jumps from the WWI half to the Siam half",
     "question": "สยามประกาศสงครามเมื่อใด",
-    "expected_keywords": ["22", "กรกฎาคม"],
+    "expected_keywords": [
+      "22",
+      "กรกฎาคม"
+    ],
     "gold_snippet": "22 กรกฎาคม 2460"
   },
   {
     "_type": "cross-section — Siam's opponents",
     "question": "สยามประกาศสงครามกับประเทศใดบ้าง",
-    "expected_keywords": ["เยอรมนี", "ออสเตรีย-ฮังการี"],
+    "expected_keywords": [
+      "เยอรมนี",
+      "ออสเตรีย-ฮังการี"
+    ],
     "gold_snippet": "ประกาศสงครามกับเยอรมนีและออสเตรีย-ฮังการี"
   },
   {
     "_type": "rare detail — Siam section, single mention",
     "question": "รัชกาลที่ 6 ทรงศึกษาวิชาการทหารที่โรงเรียนใดในอังกฤษ",
-    "expected_keywords": ["แซนด์เฮิร์สต์"],
+    "expected_keywords": [
+      "แซนด์เฮิร์สต์"
+    ],
     "gold_snippet": "แซนด์เฮิร์สต์"
   },
   {
     "_type": "number — requires precision",
     "question": "เยอรมนีประกาศทำสงครามเรือดำน้ำแบบไม่จำกัดขอบเขตเมื่อใด",
-    "expected_keywords": ["1 กุมภาพันธ์", "1917"],
+    "expected_keywords": [
+      "1 กุมภาพันธ์",
+      "1917"
+    ],
     "gold_snippet": "เรือดำน้ำแบบไม่จำกัดขอบเขต"
   },
   {
     "_type": "NEGATIVE — not in the corpus. PASS = the system refuses.",
     "question": "สงครามโลกครั้งที่ 2 สิ้นสุดลงเมื่อใด",
-    "expected_keywords": ["ไม่ทราบ"],
+    "expected_keywords": [
+      "ไม่ทราบ"
+    ],
     "gold_snippet": null
   },
   {
     "_type": "NEGATIVE — near miss, same era different war",
     "question": "สงครามเย็นเริ่มต้นเมื่อใด",
-    "expected_keywords": ["ไม่ทราบ"],
+    "expected_keywords": [
+      "ไม่ทราบ"
+    ],
     "gold_snippet": null
   },
   {
     "_type": "NEGATIVE — near miss, Thai history outside the period",
     "question": "รัชกาลที่ 9 ขึ้นครองราชย์เมื่อใด",
-    "expected_keywords": ["ไม่ทราบ"],
+    "expected_keywords": [
+      "ไม่ทราบ"
+    ],
     "gold_snippet": null
   },
   {
     "_type": "NEGATIVE — clearly outside",
     "question": "ใครเป็นผู้ก่อตั้งองค์การสหประชาชาติ",
-    "expected_keywords": ["ไม่ทราบ"],
+    "expected_keywords": [
+      "ไม่ทราบ"
+    ],
     "gold_snippet": null
   },
   {
     "_type": "NEGATIVE — clearly outside",
     "question": "โทรศัพท์มือถือเครื่องแรกผลิตในปีใด",
-    "expected_keywords": ["ไม่ทราบ"],
+    "expected_keywords": [
+      "ไม่ทราบ"
+    ],
+    "gold_snippet": null
+  },
+  {
+    "_type": "fact — date, Russian mobilisation",
+    "question": "รัสเซียประกาศระดมพลใหญ่เมื่อใด",
+    "expected_keywords": [
+      "30",
+      "กรกฎาคม"
+    ],
+    "gold_snippet": "ประกาศระดมพลใหญ่ในวันที่ 30 กรกฎาคม"
+  },
+  {
+    "_type": "fact — date, German armistice",
+    "question": "จักรวรรดิเยอรมันประกาศหยุดยิงเมื่อใด",
+    "expected_keywords": [
+      "11",
+      "พฤศจิกายน"
+    ],
+    "gold_snippet": "ประกาศหยุดยิงในวันที่ 11 พฤศจิกายน"
+  },
+  {
+    "_type": "list — requires the enumerated section",
+    "question": "จักรวรรดิใดบ้างที่ล่มสลายหลังสงครามโลกครั้งที่ 1",
+    "expected_keywords": [
+      "เยอรมัน",
+      "ออสเตรีย-ฮังการี",
+      "รัสเซีย",
+      "ออตโตมัน"
+    ],
+    "gold_snippet": "สี่จักรวรรดิใหญ่ของโลกได้สิ้นสุดลง"
+  },
+  {
+    "_type": "fact — organisation founded after the war",
+    "question": "องค์กรระดับโลกใดถูกจัดตั้งขึ้นหลังสงครามโลกครั้งที่ 1",
+    "expected_keywords": [
+      "สันนิบาตชาติ"
+    ],
+    "gold_snippet": "สันนิบาตชาติ"
+  },
+  {
+    "_type": "number — total mobilised",
+    "question": "มีประชาชนถูกระดมเข้าสู่กองทัพในสงครามโลกครั้งที่ 1 ประมาณกี่คน",
+    "expected_keywords": [
+      "70",
+      "ล้าน"
+    ],
+    "gold_snippet": "ประชาชนประมาณ 70 ล้านคนถูกระดมเข้าสู่"
+  },
+  {
+    "_type": "number — total casualties",
+    "question": "ความสูญเสียทางทหารของทั้งสองฝ่ายรวมกันมีจำนวนเท่าใด",
+    "expected_keywords": [
+      "38.8",
+      "ล้าน"
+    ],
+    "gold_snippet": "มีจำนวนมากถึง 38.8 ล้านนาย"
+  },
+  {
+    "_type": "number — war cost",
+    "question": "ฝ่ายสัมพันธมิตรใช้งบประมาณทางทหารในสงครามเท่าใด",
+    "expected_keywords": [
+      "58",
+      "พันล้าน"
+    ],
+    "gold_snippet": "58 พันล้านเหรียญสหรัฐ"
+  },
+  {
+    "_type": "fact — first Central Power to surrender",
+    "question": "ประเทศใดในฝ่ายมหาอำนาจกลางประกาศยอมแพ้เป็นประเทศแรก",
+    "expected_keywords": [
+      "บัลแกเรีย"
+    ],
+    "gold_snippet": "บัลแกเรียเป็นประเทศแรกที่ประกาศยอมแพ้"
+  },
+  {
+    "_type": "rare detail — mentioned once",
+    "question": "ทหารคนสุดท้ายที่เสียชีวิตก่อนการหยุดยิงมีชื่อว่าอะไร",
+    "expected_keywords": [
+      "Price",
+      "Gunther"
+    ],
+    "gold_snippet": "George L. Price"
+  },
+  {
+    "_type": "rare detail — mentioned once",
+    "question": "ใครเป็นผู้เรียกสงครามนี้ว่า \"สงครามโลกครั้งที่หนึ่ง\" เป็นคนแรก",
+    "expected_keywords": [
+      "Haeckel"
+    ],
+    "gold_snippet": "Ernst Haeckel"
+  },
+  {
+    "_type": "cross-section — Siam troop numbers",
+    "question": "สยามส่งกองทหารบกรถยนต์ไปร่วมสงครามประมาณกี่นาย",
+    "expected_keywords": [
+      "850"
+    ],
+    "gold_snippet": "กองทหารบกรถยนต์ประมาณ 850 นาย"
+  },
+  {
+    "_type": "cross-section — departure date",
+    "question": "กองทหารอาสาของสยามออกเดินทางจากสยามเมื่อใด",
+    "expected_keywords": [
+      "15",
+      "มิถุนายน"
+    ],
+    "gold_snippet": "ออกเดินทางจากสยามในวันที่ 15 มิถุนายน"
+  },
+  {
+    "_type": "rare detail — Siam section, single mention",
+    "question": "อนุสาวรีย์ทหารอาสาสงครามโลกครั้งที่ 1 ตั้งอยู่ที่ใด",
+    "expected_keywords": [
+      "สนามหลวง"
+    ],
+    "gold_snippet": "หัวมุมสนามหลวงใกล้กับโรงละคร"
+  },
+  {
+    "_type": "rare detail — year deep in the text",
+    "question": "วันที่ 28 มิถุนายน เป็นวันครบรอบการรบใดของนักชาตินิยมเซอร์เบีย",
+    "expected_keywords": [
+      "โคโซโว",
+      "1389"
+    ],
+    "gold_snippet": "รบที่โคโซโว"
+  },
+  {
+    "_type": "cross-section — Rama VI education",
+    "question": "รัชกาลที่ 6 เสด็จไปศึกษาที่อังกฤษตั้งแต่พระชนมายุเท่าใด",
+    "expected_keywords": [
+      "13"
+    ],
+    "gold_snippet": "ชนมายุได้ 13 พรรษา"
+  },
+  {
+    "_type": "cross-section — treaty revision",
+    "question": "สยามแก้ไขสนธิสัญญากับสหรัฐอเมริกาสำเร็จในปีใด",
+    "expected_keywords": [
+      "2463"
+    ],
+    "gold_snippet": "สหรัฐฯ ใน พ.ศ. 2463"
+  },
+  {
+    "_type": "paraphrase — asks using words not in the source text",
+    "question": "เยอรมนีให้สัญญาสนับสนุนออสเตรีย-ฮังการีอย่างไม่มีเงื่อนไข เรียกนโยบายนี้ว่าอะไร",
+    "expected_keywords": [
+      "เช็คเปล่า"
+    ],
+    "gold_snippet": "เช็คเปล่า"
+  },
+  {
+    "_type": "multi-paragraph — Rasputin",
+    "question": "รัสปูตินเกิดอะไรขึ้นหลังเหตุการณ์ลอบปลงพระชนม์ที่ซาราเจโว 2 สัปดาห์",
+    "expected_keywords": [
+      "แทง"
+    ],
+    "gold_snippet": "ถูกผู้หญิงคนหนึ่งแทงที่ช่องท้อง"
+  },
+  {
+    "_type": "NEGATIVE — near miss, very plausible",
+    "question": "สนธิสัญญาแวร์ซายลงนามเมื่อวันที่เท่าใด",
+    "expected_keywords": [
+      "ไม่ทราบ"
+    ],
+    "gold_snippet": null
+  },
+  {
+    "_type": "NEGATIVE — near miss, Thai history outside the period",
+    "question": "การปฏิวัติสยาม พ.ศ. 2475 เกิดขึ้นเพราะอะไร",
+    "expected_keywords": [
+      "ไม่ทราบ"
+    ],
+    "gold_snippet": null
+  },
+  {
+    "_type": "NEGATIVE — clearly outside",
+    "question": "อินเทอร์เน็ตถูกประดิษฐ์ขึ้นในปีใด",
+    "expected_keywords": [
+      "ไม่ทราบ"
+    ],
     "gold_snippet": null
   }
 ]
