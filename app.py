@@ -34,13 +34,15 @@ PAGE = """
 async function ask(){
   const out = document.getElementById('out');
   out.textContent = 'กำลังคิด...';
+  const t0 = performance.now();
   const r = await fetch('/ask', {
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body: JSON.stringify({question: document.getElementById('q').value})
   });
   const d = await r.json();
-  out.textContent = d.answer;
+  const ms = Math.round(performance.now() - t0);
+  out.textContent = d.answer + `\n\n(${(ms/1000).toFixed(1)}s)`;
 }
 </script>
 </body></html>

@@ -123,7 +123,7 @@ PRICE_IN  = 0.15 / 1_000_000     # $ per input token  — verify on the pricing 
 PRICE_OUT = 0.60 / 1_000_000 
 GENERATOR = "typhoon"
 
-if GENERATOR == "typhoon":
+if GENERATOR == "GPT":
     c, model = typhoon_client, "typhoon-v2.5-30b-a3b-instruct"
 else:
     c, model = client, "gpt-4o-mini"
@@ -171,6 +171,12 @@ def bm25_idx(question,n = 20):
 
 
 def query_hybrid(question,n_results = 10 ,k = 10,w_bm25 = 3.0):
+    t0 = time.perf_counter()
+    v_ids = vector_idx(question)
+    t1 = time.perf_counter()
+    b_ids = bm25_idx(question)
+    t2 = time.perf_counter()
+    print(f"  vector {(t1-t0)*1000:.0f}ms  bm25 {(t2-t1)*1000:.0f}ms")
     scores = {}
     for lst,weight in ((vector_idx(question),1.0),(bm25_idx(question),w_bm25)):
         for rank,cid in enumerate(lst):
