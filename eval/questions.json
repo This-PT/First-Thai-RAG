@@ -6,7 +6,8 @@
       "28",
       "มิถุนายน"
     ],
-    "gold_snippet": "28 มิถุนายน 1914"
+    "gold_snippet": "28 มิถุนายน 1914",
+    "gold_answer": "28 มิถุนายน 1914"
   },
   {
     "_type": "fact — named person",
@@ -14,7 +15,8 @@
     "expected_keywords": [
       "ปรินซิป"
     ],
-    "gold_snippet": "ถูกลอบยิงโดยปรินซิป"
+    "gold_snippet": "ถูกลอบยิงโดยปรินซิป",
+    "gold_answer": "ปรินซิป (Gavrilo Princip)"
   },
   {
     "_type": "fact — organization",
@@ -22,7 +24,8 @@
     "expected_keywords": [
       "มือดำ"
     ],
-    "gold_snippet": "องค์กรลับ"
+    "gold_snippet": "องค์กรลับ",
+    "gold_answer": "องค์กรลับ \"มือดำ\" (The Black Hand)"
   },
   {
     "_type": "fact — place",
@@ -30,7 +33,8 @@
     "expected_keywords": [
       "บอสเนีย"
     ],
-    "gold_snippet": "เมืองหลวงของจังหวัด"
+    "gold_snippet": "เมืองหลวงของจังหวัด",
+    "gold_answer": "บอสเนีย-เฮอร์เซโกวีนา"
   },
   {
     "_type": "list — requires the enumerated section",
@@ -41,7 +45,8 @@
       "ทหารนิยม",
       "พันธมิตร"
     ],
-    "gold_snippet": "ลัทธิทหารนิยม"
+    "gold_snippet": "ลัทธิทหารนิยม",
+    "gold_answer": "ลัทธิชาตินิยม ลัทธิจักรวรรดินิยม ลัทธิทหารนิยม และระบบพันธมิตร"
   },
   {
     "_type": "fact — year + members",
@@ -50,7 +55,8 @@
       "1882",
       "อิตาลี"
     ],
-    "gold_snippet": "ระบบพันธมิตรสามฝ่าย"
+    "gold_snippet": "ระบบพันธมิตรสามฝ่าย",
+    "gold_answer": "ปี 1882 ประกอบด้วยเยอรมนี ออสเตรีย-ฮังการี และอิตาลี"
   },
   {
     "_type": "paraphrase — asks using words not in the source text",
@@ -59,7 +65,8 @@
       "อังกฤษ",
       "เยอรมนี"
     ],
-    "gold_snippet": "ราชนาวีอังกฤษและเยอรมัน"
+    "gold_snippet": "ราชนาวีอังกฤษและเยอรมัน",
+    "gold_answer": "อังกฤษและเยอรมนี"
   },
   {
     "_type": "multi-paragraph — chain of declarations spans several paragraphs",
@@ -68,7 +75,8 @@
       "1 สิงหาคม",
       "รัสเซีย"
     ],
-    "gold_snippet": "ประกาศสงครามกับรัสเซียในวันที่"
+    "gold_snippet": "ประกาศสงครามกับรัสเซียในวันที่",
+    "gold_answer": "ประกาศสงครามกับรัสเซีย ในวันที่ 1 สิงหาคม 1914"
   },
   {
     "_type": "rare detail — mentioned once",
@@ -76,7 +84,8 @@
     "expected_keywords": [
       "ชลีเฟน"
     ],
-    "gold_snippet": "ชลีเฟน"
+    "gold_snippet": "ชลีเฟน",
+    "gold_answer": "แผนชลีเฟน (The Schlieffen Plan)"
   },
   {
     "_type": "rare detail — year deep in the text",
@@ -84,7 +93,8 @@
     "expected_keywords": [
       "1839"
     ],
-    "gold_snippet": "ค้ำประกันจากอังกฤษในปี"
+    "gold_snippet": "ค้ำประกันจากอังกฤษในปี",
+    "gold_answer": "ปี 1839"
   },
   {
     "_type": "cross-section — jumps from the WWI half to the Siam half",
@@ -93,7 +103,8 @@
       "22",
       "กรกฎาคม"
     ],
-    "gold_snippet": "22 กรกฎาคม 2460"
+    "gold_snippet": "22 กรกฎาคม 2460",
+    "gold_answer": "22 กรกฎาคม 2460"
   },
   {
     "_type": "cross-section — Siam's opponents",
@@ -102,7 +113,8 @@
       "เยอรมนี",
       "ออสเตรีย-ฮังการี"
     ],
-    "gold_snippet": "ประกาศสงครามกับเยอรมนีและออสเตรีย-ฮังการี"
+    "gold_snippet": "ประกาศสงครามกับเยอรมนีและออสเตรีย-ฮังการี",
+    "gold_answer": "เยอรมนีและออสเตรีย-ฮังการี"
   },
   {
     "_type": "rare detail — Siam section, single mention",
@@ -110,7 +122,8 @@
     "expected_keywords": [
       "แซนด์เฮิร์สต์"
     ],
-    "gold_snippet": "แซนด์เฮิร์สต์"
+    "gold_snippet": "แซนด์เฮิร์สต์",
+    "gold_answer": "โรงเรียนนายร้อยทหารบกแซนด์เฮิร์สต์ (Sandhurst)"
   },
   {
     "_type": "number — requires precision",
@@ -119,7 +132,8 @@
       "1 กุมภาพันธ์",
       "1917"
     ],
-    "gold_snippet": "เรือดำน้ำแบบไม่จำกัดขอบเขต"
+    "gold_snippet": "เรือดำน้ำแบบไม่จำกัดขอบเขต",
+    "gold_answer": "1 กุมภาพันธ์ 1917"
   },
   {
     "_type": "NEGATIVE — not in the corpus. PASS = the system refuses.",
@@ -127,7 +141,8 @@
     "expected_keywords": [
       "ไม่ทราบ"
     ],
-    "gold_snippet": null
+    "gold_snippet": null,
+    "gold_answer": "ไม่ทราบ"
   },
   {
     "_type": "NEGATIVE — near miss, same era different war",
@@ -135,7 +150,8 @@
     "expected_keywords": [
       "ไม่ทราบ"
     ],
-    "gold_snippet": null
+    "gold_snippet": null,
+    "gold_answer": "ไม่ทราบ"
   },
   {
     "_type": "NEGATIVE — near miss, Thai history outside the period",
@@ -143,7 +159,8 @@
     "expected_keywords": [
       "ไม่ทราบ"
     ],
-    "gold_snippet": null
+    "gold_snippet": null,
+    "gold_answer": "ไม่ทราบ"
   },
   {
     "_type": "NEGATIVE — clearly outside",
@@ -151,7 +168,8 @@
     "expected_keywords": [
       "ไม่ทราบ"
     ],
-    "gold_snippet": null
+    "gold_snippet": null,
+    "gold_answer": "ไม่ทราบ"
   },
   {
     "_type": "NEGATIVE — clearly outside",
@@ -159,7 +177,8 @@
     "expected_keywords": [
       "ไม่ทราบ"
     ],
-    "gold_snippet": null
+    "gold_snippet": null,
+    "gold_answer": "ไม่ทราบ"
   },
   {
     "_type": "fact — date, Russian mobilisation",
@@ -168,7 +187,8 @@
       "30",
       "กรกฎาคม"
     ],
-    "gold_snippet": "ประกาศระดมพลใหญ่ในวันที่ 30 กรกฎาคม"
+    "gold_snippet": "ประกาศระดมพลใหญ่ในวันที่ 30 กรกฎาคม",
+    "gold_answer": "30 กรกฎาคม"
   },
   {
     "_type": "fact — date, German armistice",
@@ -177,7 +197,8 @@
       "11",
       "พฤศจิกายน"
     ],
-    "gold_snippet": "ประกาศหยุดยิงในวันที่ 11 พฤศจิกายน"
+    "gold_snippet": "ประกาศหยุดยิงในวันที่ 11 พฤศจิกายน",
+    "gold_answer": "11 พฤศจิกายน 1918"
   },
   {
     "_type": "list — requires the enumerated section",
@@ -188,7 +209,8 @@
       "รัสเซีย",
       "ออตโตมัน"
     ],
-    "gold_snippet": "สี่จักรวรรดิใหญ่ของโลกได้สิ้นสุดลง"
+    "gold_snippet": "สี่จักรวรรดิใหญ่ของโลกได้สิ้นสุดลง",
+    "gold_answer": "จักรวรรดิเยอรมัน ออสเตรีย-ฮังการี รัสเซีย และออตโตมัน"
   },
   {
     "_type": "fact — organisation founded after the war",
@@ -196,7 +218,8 @@
     "expected_keywords": [
       "สันนิบาตชาติ"
     ],
-    "gold_snippet": "สันนิบาตชาติ"
+    "gold_snippet": "สันนิบาตชาติ",
+    "gold_answer": "สันนิบาตชาติ (The League of Nations)"
   },
   {
     "_type": "number — total mobilised",
@@ -205,7 +228,8 @@
       "70",
       "ล้าน"
     ],
-    "gold_snippet": "ประชาชนประมาณ 70 ล้านคนถูกระดมเข้าสู่"
+    "gold_snippet": "ประชาชนประมาณ 70 ล้านคนถูกระดมเข้าสู่",
+    "gold_answer": "ประมาณ 70 ล้านคน"
   },
   {
     "_type": "number — total casualties",
@@ -214,7 +238,8 @@
       "38.8",
       "ล้าน"
     ],
-    "gold_snippet": "มีจำนวนมากถึง 38.8 ล้านนาย"
+    "gold_snippet": "มีจำนวนมากถึง 38.8 ล้านนาย",
+    "gold_answer": "38.8 ล้านนาย"
   },
   {
     "_type": "number — war cost",
@@ -223,7 +248,8 @@
       "58",
       "พันล้าน"
     ],
-    "gold_snippet": "58 พันล้านเหรียญสหรัฐ"
+    "gold_snippet": "58 พันล้านเหรียญสหรัฐ",
+    "gold_answer": "58 พันล้านเหรียญสหรัฐ"
   },
   {
     "_type": "fact — first Central Power to surrender",
@@ -231,7 +257,8 @@
     "expected_keywords": [
       "บัลแกเรีย"
     ],
-    "gold_snippet": "บัลแกเรียเป็นประเทศแรกที่ประกาศยอมแพ้"
+    "gold_snippet": "บัลแกเรียเป็นประเทศแรกที่ประกาศยอมแพ้",
+    "gold_answer": "บัลแกเรีย"
   },
   {
     "_type": "rare detail — mentioned once",
@@ -240,7 +267,8 @@
       "Price",
       "Gunther"
     ],
-    "gold_snippet": "George L. Price"
+    "gold_snippet": "George L. Price",
+    "gold_answer": "George L. Price และ Henry Gunther"
   },
   {
     "_type": "rare detail — mentioned once",
@@ -248,7 +276,8 @@
     "expected_keywords": [
       "Haeckel"
     ],
-    "gold_snippet": "Ernst Haeckel"
+    "gold_snippet": "Ernst Haeckel",
+    "gold_answer": "Ernst Haeckel"
   },
   {
     "_type": "cross-section — Siam troop numbers",
@@ -256,7 +285,8 @@
     "expected_keywords": [
       "850"
     ],
-    "gold_snippet": "กองทหารบกรถยนต์ประมาณ 850 นาย"
+    "gold_snippet": "กองทหารบกรถยนต์ประมาณ 850 นาย",
+    "gold_answer": "ประมาณ 850 นาย"
   },
   {
     "_type": "cross-section — departure date",
@@ -265,7 +295,8 @@
       "15",
       "มิถุนายน"
     ],
-    "gold_snippet": "ออกเดินทางจากสยามในวันที่ 15 มิถุนายน"
+    "gold_snippet": "ออกเดินทางจากสยามในวันที่ 15 มิถุนายน",
+    "gold_answer": "15 มิถุนายน 1918"
   },
   {
     "_type": "rare detail — Siam section, single mention",
@@ -273,7 +304,8 @@
     "expected_keywords": [
       "สนามหลวง"
     ],
-    "gold_snippet": "หัวมุมสนามหลวงใกล้กับโรงละคร"
+    "gold_snippet": "หัวมุมสนามหลวงใกล้กับโรงละคร",
+    "gold_answer": "หัวมุมสนามหลวง ใกล้โรงละครแห่งชาติ"
   },
   {
     "_type": "rare detail — year deep in the text",
@@ -282,7 +314,8 @@
       "โคโซโว",
       "1389"
     ],
-    "gold_snippet": "รบที่โคโซโว"
+    "gold_snippet": "รบที่โคโซโว",
+    "gold_answer": "การรบที่โคโซโว"
   },
   {
     "_type": "cross-section — Rama VI education",
@@ -290,7 +323,8 @@
     "expected_keywords": [
       "13"
     ],
-    "gold_snippet": "ชนมายุได้ 13 พรรษา"
+    "gold_snippet": "ชนมายุได้ 13 พรรษา",
+    "gold_answer": "13 พรรษา"
   },
   {
     "_type": "cross-section — treaty revision",
@@ -298,7 +332,8 @@
     "expected_keywords": [
       "2463"
     ],
-    "gold_snippet": "สหรัฐฯ ใน พ.ศ. 2463"
+    "gold_snippet": "สหรัฐฯ ใน พ.ศ. 2463",
+    "gold_answer": "พ.ศ. 2463"
   },
   {
     "_type": "paraphrase — asks using words not in the source text",
@@ -306,7 +341,8 @@
     "expected_keywords": [
       "เช็คเปล่า"
     ],
-    "gold_snippet": "เช็คเปล่า"
+    "gold_snippet": "เช็คเปล่า",
+    "gold_answer": "นโยบาย \"เช็คเปล่า\" (blank cheque)"
   },
   {
     "_type": "multi-paragraph — Rasputin",
@@ -314,7 +350,8 @@
     "expected_keywords": [
       "แทง"
     ],
-    "gold_snippet": "ถูกผู้หญิงคนหนึ่งแทงที่ช่องท้อง"
+    "gold_snippet": "ถูกผู้หญิงคนหนึ่งแทงที่ช่องท้อง",
+    "gold_answer": "ถูกผู้หญิงคนหนึ่งแทงที่ช่องท้อง"
   },
   {
     "_type": "NEGATIVE — near miss, very plausible",
@@ -322,7 +359,8 @@
     "expected_keywords": [
       "ไม่ทราบ"
     ],
-    "gold_snippet": null
+    "gold_snippet": null,
+    "gold_answer": "ไม่ทราบ"
   },
   {
     "_type": "NEGATIVE — near miss, Thai history outside the period",
@@ -330,7 +368,8 @@
     "expected_keywords": [
       "ไม่ทราบ"
     ],
-    "gold_snippet": null
+    "gold_snippet": null,
+    "gold_answer": "ไม่ทราบ"
   },
   {
     "_type": "NEGATIVE — clearly outside",
@@ -338,6 +377,7 @@
     "expected_keywords": [
       "ไม่ทราบ"
     ],
-    "gold_snippet": null
+    "gold_snippet": null,
+    "gold_answer": "ไม่ทราบ"
   }
 ]

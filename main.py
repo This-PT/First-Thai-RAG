@@ -11,7 +11,7 @@ from rank_bm25 import BM25Okapi
 from pythainlp.tokenize import word_tokenize
 from fastapi import FastAPI
 import time
-
+import json
 
 load_dotenv()
 
@@ -192,8 +192,37 @@ def answer_question(question):
     answer = generate_response(question, chunks)
     t2 = time.perf_counter()
     print(f"retrieve {(t1-t0)*1000:.0f}ms  generate {(t2-t1)*1000:.0f}ms")
+    
     return answer
 
+
+
+JUDGE_SYSTEM = """คุณเป็นผู้ตรวจคำตอบของระบบถาม-ตอบภาษาไทย
+เปรียบเทียบ "คำตอบของระบบ" กับ "คำตอบอ้างอิง" เท่านั้น ห้ามใช้ความรู้ภายนอก
+ถ้าคำตอบของระบบมีข้อมูลหลักครบแล้ว แต่ให้รายละเอียดเพิ่มเติมที่ถูกต้อง
+ถือว่า correct ไม่ถือว่าผิดหรือขาด
+
+- correct   = ให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน (ถ้อยคำต่างกันได้)
+- partial   = ถูกบางส่วน หรือขาดข้อมูลสำคัญบางอย่าง
+- incorrect = ผิด หรือไม่ตอบคำถาม
+
+ถ้าคำตอบอ้างอิงบอกว่าไม่ทราบ การที่ระบบตอบว่า "ไม่ทราบ" ถือว่า correct
+
+ตอบเป็น JSON เท่านั้น: {"verdict": "...", "reason": "..."}"""
+
+
+def judge(question, gold_answer, system_answer):
+    r = c.chat.completions.create(
+        model= model,
+        temperature=0,
+        response_format={"type": "json_object"},
+        messages=[
+            {"role": "system", "content": JUDGE_SYSTEM},
+            {"role": "user", "content":
+             f"คำถาม: {question}\n\nคำตอบอ้างอิง: {gold_answer}\n\nคำตอบของระบบ: {system_answer}"},
+        ],
+    )
+    return json.loads(r.choices[0].message.content)
 
 def main():
     if len(sys.argv) < 2:

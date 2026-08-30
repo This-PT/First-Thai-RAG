@@ -2,10 +2,10 @@ import json
 import os
 import sys
 import datetime
-
+from collections import Counter
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from main import query_documents, generate_response,query_bm25,query_hybrid
+from main import query_documents, generate_response,query_bm25,query_hybrid,judge
 
 QUESTIONS_PATH = os.path.join(os.path.dirname(__file__), "questions.json")
 N_RESULTS = 10
@@ -49,7 +49,7 @@ def main():
 
         answer = generate_response(question, chunks)
 
-
+        v = judge(question, case["gold_answer"], answer)
 
 
 
@@ -72,6 +72,8 @@ def main():
                     "retrieval_pass": bool(retrieval_pass),
                     "answer_pass": bool(answer_pass),
                     "answer": answer,
+                    "judge_verdict": v["verdict"],
+                    "judge_reason": v["reason"],
                 })
 
 
@@ -159,5 +161,18 @@ def main():
     json.dump(report, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print("wrote", path)
 
+    ctr = Counter(r["judge_verdict"] for r in in_corpus)
+    print(f"judge   correct {ctr['correct']}  partial {ctr['partial']}  incorrect {ctr['incorrect']}")
+
+    disagree = [r for r in in_corpus
+                if r["answer_pass"] != (r["judge_verdict"] == "correct")]
+    print(f"disagreements: {len(disagree)}/{len(in_corpus)}")
+    for r in disagree:
+        print(f"\n  Q: {r['question']}")
+        print(f"  keyword {r['answer_score']:.2f} | judge {r['judge_verdict']}")
+        print(f"  reason: {r['judge_reason']}")
+        print(f"  answer: {r['answer'][:150]}")
+
+    
 if __name__ == "__main__":
     main()

@@ -269,6 +269,23 @@ was a client and a model name — no other code changed.
 | Render (free tier) | 1.4s | 1.7s | 3.0s |
 
 
+### Answer scoring
+
+| metric | result |
+|---|---|
+| keyword coverage | 31/32 (97%) |
+| LLM judge | 30 correct, 2 partial, 0 incorrect |
+
+The two metrics disagreed on 1 of 32 questions. Hand-checking showed the judge
+was right: the system listed three of the four factors and invented a fourth,
+which keyword coverage scored 0.75 and passed.
+
+The judge was validated before use on four cases — a wrong answer (rejected),
+a synonym (accepted), a terse answer (accepted), and an incomplete answer
+(marked partial). An earlier version penalised answers for including extra
+correct detail; that was found by hand-checking a disagreement and fixed in
+the judge prompt.
+
 ### Update
 
 - **20/08/26 (fixed)** i found that my RAG had a big problem which is retrieval failure some . Since,retrieval_score is 1.0 but after i read all chunks i realize that i couldn't answer it either . So the score was lying.
