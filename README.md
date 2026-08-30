@@ -165,7 +165,7 @@ Retrieval is nearly flat from 3 to 10 — the most diagnostic result here. The f
 ### Caveats
 
 - **n = 15**, so one question is 6.7% — single-question differences are noise. The data strongly supports only that 600 is worse than 1200+; the overlap trend is suggestive because it's monotonic across three settings.
-- **The negative case structurally fails the retrieval check.** Its expected keyword (`ไม่ทราบ`) can't appear in retrieved Thai chunks, so it counts as a retrieval miss every run. The achievable ceiling is 14/15, making the best result 13/14 (93%) rather than 87%.
+- **The negative case structurally fails the retrieval check.** Its expected keyword (`ไม่ทราบ`) can't appear in retrieved Thai chunks, so it counts as a retrieval miss every run. 
 
 
 

@@ -186,7 +186,8 @@ def query_hybrid(question,n_results = 10 ,k = 10,w_bm25 = 3.0):
 
 def answer_question(question):
     t0 = time.perf_counter()
-    chunks = query_hybrid(question, n_results=10, k=10, w_bm25=3.0)
+    # chunks = query_hybrid(question, n_results=10, k=10, w_bm25=3.0)
+    chunks = query_bm25(question, n_results=n_results)
     t1 = time.perf_counter()
     answer = generate_response(question, chunks)
     t2 = time.perf_counter()
