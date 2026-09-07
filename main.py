@@ -121,7 +121,7 @@ def query_documents(question, n_results=10):
 
 PRICE_IN  = 0.15 / 1_000_000     # $ per input token  — verify on the pricing page
 PRICE_OUT = 0.60 / 1_000_000 
-GENERATOR = "GPT"
+GENERATOR = "typhoon"
 
 if GENERATOR == "typhoon":
     c, model = typhoon_client, "typhoon-v2.5-30b-a3b-instruct"
@@ -171,12 +171,12 @@ def bm25_idx(question,n = 20):
 
 
 def query_hybrid(question,n_results = 10 ,k = 10,w_bm25 = 3.0):
-    t0 = time.perf_counter()
-    v_ids = vector_idx(question)
-    t1 = time.perf_counter()
-    b_ids = bm25_idx(question)
-    t2 = time.perf_counter()
-    print(f"  vector {(t1-t0)*1000:.0f}ms  bm25 {(t2-t1)*1000:.0f}ms")
+    # t0 = time.perf_counter()
+    # v_ids = vector_idx(question)
+    # t1 = time.perf_counter()
+    # b_ids = bm25_idx(question)
+    # t2 = time.perf_counter()
+    # print(f"  vector {(t1-t0)*1000:.0f}ms  bm25 {(t2-t1)*1000:.0f}ms")
     scores = {}
     for lst,weight in ((vector_idx(question),1.0),(bm25_idx(question),w_bm25)):
         for rank,cid in enumerate(lst):
@@ -186,13 +186,16 @@ def query_hybrid(question,n_results = 10 ,k = 10,w_bm25 = 3.0):
 
 def answer_question(question):
     t0 = time.perf_counter()
-    # chunks = query_hybrid(question, n_results=10, k=10, w_bm25=3.0)
-    chunks = query_bm25(question, n_results=n_results)
+    if Retriever_type == 'vec':
+        chunks = query_documents(question, n_results=n_results)
+    elif Retriever_type == 'bm25':
+        chunks = query_bm25(question, n_results=n_results)
+    else:
+        chunks = query_hybrid(question, n_results=n_results)
     t1 = time.perf_counter()
     answer = generate_response(question, chunks)
     t2 = time.perf_counter()
     print(f"retrieve {(t1-t0)*1000:.0f}ms  generate {(t2-t1)*1000:.0f}ms")
-    
     return answer
 
 
@@ -212,8 +215,8 @@ JUDGE_SYSTEM = """คุณเป็นผู้ตรวจคำตอบข�
 
 
 def judge(question, gold_answer, system_answer):
-    r = c.chat.completions.create(
-        model= model,
+    r = client.chat.completions.create(
+        model= "gpt-4o-mini",
         temperature=0,
         response_format={"type": "json_object"},
         messages=[

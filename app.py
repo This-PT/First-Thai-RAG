@@ -4,6 +4,7 @@ from main import answer_question
 from fastapi.responses import HTMLResponse
 import time, logging
 
+
 app = FastAPI()
 
 class Q(BaseModel):
