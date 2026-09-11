@@ -1,4 +1,7 @@
+from dataclasses import dataclass
 from typing import Literal
+@dataclass(frozen=True)
+
 class Settings:
     retriever : Literal["bm25", "vector", "hybrid"] = "bm25"
     generator: Literal["typhoon", "openai"] = "typhoon"

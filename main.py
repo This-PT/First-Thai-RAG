@@ -157,7 +157,6 @@ def generate_response(question, relevant_chunks):
     answer = response.choices[0].message.content
     return answer
 
-Retriever_type = settings.retriever
 # n_results = 10
 
 def vector_idx(question,n = 20):
@@ -179,9 +178,9 @@ def query_hybrid(question,n_results = settings.n_results ,rrf_k = settings.rrf_k
     return [chunk_by_id[c] for c in best]
 
 def retrieve(question, n_results):
-    if Retriever_type == "vector":
+    if settings.retriever == "vector":
         return query_documents(question, n_results=n_results)
-    if Retriever_type == "bm25":
+    if settings.retriever == "bm25":
         return query_bm25(question, n_results=n_results)
     return query_hybrid(question, n_results=n_results)
 
@@ -240,9 +239,9 @@ def main():
             return
         question = sys.argv[2]
         # chunks = query_documents(question)
-        if Retriever_type == 'vector':
+        if settings.retriever == 'vector':
             chunks = query_documents(question, n_results=settings.n_results)
-        elif Retriever_type == 'bm25':
+        elif settings.retriever == 'bm25':
             chunks = query_bm25(question, n_results=settings.n_results)
         else:
             chunks = query_hybrid(question, n_results=settings.n_results)
