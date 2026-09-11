@@ -1,16 +1,17 @@
 # First-Thai-RAG 
 
-A Retrieval-Augmented Generation (RAG) pipeline built from scratch for **Thai-language documents**.
+A Retrieval-Augmented Generation (RAG) pipeline built for **Thai-language documents**.
+
+I started this project from a normal vector RAG tutorial, then I went deeper by adding Thai-aware chunking, BM25, hybrid search, an evaluation system, model comparison, API validation, and tests. The main goal is not only to make the RAG answer, but to understand why it works, where it fails, and how much each choice costs.
 
 Most RAG tutorials assume English text. Thai breaks several of their assumptions — there are no spaces between words, no sentence-ending punctuation, and characters carry combining marks that must never be separated from their base. This project handles those cases explicitly.
 
 
-**Current results** — 19-question eval set (14 answerable, 5 not in the corpus):
+**Current results** — 61-question eval set (50 answerable, 11 not in the corpus), using BM25 and Typhoon:
 
-| retriever | retrieval | answer | refusal |
+| retrieval | answer | refusal | LLM judge |
 |---|---|---|---|
-| vector (OpenAI embeddings) | 8/14 (57%) | 8/14 (57%) | 5/5 |
-| **BM25 (PyThaiNLP newmm)** | **13/14 (93%)** | **13/14 (93%)** | 5/5 |
+| **46/50 (92%)** | **46/50 (92%)** | **10/11 (91%)** | **47 correct, 1 partial, 2 incorrect** |
 
 Corpus: 71,000 characters of Thai text about WWI and Siam's entry into it.
 
@@ -18,42 +19,42 @@ Corpus: 71,000 characters of Thai text about WWI and Siam's entry into it.
 ## Architecture
 
 ```
-Thai .txt documents
-        │
-        ▼
-  split_thai()          paragraph-aware chunking, combining-mark safe
-        │
-        ▼
-  OpenAI embeddings     text-embedding-3-small
-        │
-        ▼
-  ChromaDB              persistent vector store on disk
-        │
-        ▼
-  similarity search     top-N nearest chunks for a question
-        │
-        ▼
-  gpt-4o-mini           answers grounded in the retrieved chunks
+Thai document
+      ↓
+Thai-aware chunking
+      ↓
+OpenAI embeddings → ChromaDB
+      ↓
+BM25 / Vector / Hybrid retrieval
+      ↓
+Relevant chunks placed in the prompt
+      ↓
+Typhoon or OpenAI generates a grounded answer
+      ↓
+FastAPI returns the answer to the web page
 ```
 
 **Two phases:**
 
 - **Indexing** (run once): load → chunk → embed → store in ChromaDB.
-- **Querying** (run per question): embed the question → retrieve nearest chunks → build a grounded prompt → generate the answer.
+- **Querying** (run per question): choose BM25, vector, or hybrid → retrieve top chunks → build a grounded prompt → generate the answer.
 
-## Keyword-based 
-evaluation is unreliable for Thai because register shifts (ราชาศัพท์) change vocabulary for the same fact — this motivated moving toward LLM-as-judge scoring.
+The current default is **BM25** because the larger evaluation showed that it performs as well as or better than hybrid for this corpus, while avoiding a query embedding call.
+
+## Why I use more than one evaluation metric
+
+Keyword-based evaluation alone is unreliable for Thai because register shifts (ราชาศัพท์) can change the vocabulary used for the same fact. But an LLM judge can also make mistakes. Because of this, I keep both keyword coverage and LLM-as-judge scoring, then inspect where they disagree.
 
 
 ## How I measure it 
 
-the eval set has 19 questions. 14 have answers in corpus . 5 do not for testing the refuse of system instead of making something up.
+The current eval set has 61 questions. 50 have answers in the corpus and 11 do not. The negative questions test whether the system refuses instead of making something up.
 
 **Retrieval** is scored with a gold_snippet: a phrase from the sentence that actually answers the question. If that phrase is not in the retrieved chunks, retrieval failed.
 
 **Answers** are scored by keyword coverage: how many expected keywords appear in the answer, as a fraction.
 
-**Refusal** is scored separately, only on the 5 out-of-corpus questions. Correct = the answer contains ไม่ทราบ.
+**Refusal** is scored separately, only on the 11 out-of-corpus questions. Correct = the answer contains ไม่ทราบ.
 
 
 
@@ -74,17 +75,51 @@ Create a `.env` file in the project root:
 
 ```
 OPENAI_API_KEY=sk-your-key-here
+TYPHOON_API_KEY=your-typhoon-key-here
 ```
 
 Place your Thai `.txt` documents in the data directory, then:
 
 ```bash
-python main.py index  | for loading,chunking and embedding 
-python main.py ask "question"  | for asing question 
-python eval/run_eval.py  |  for run eval
-rmdir /s chroma_persistent_storage | for clearing old embedding
+python main.py index                 # load, chunk, embed, and store documents
+python main.py ask "question"        # ask from the command line
+uvicorn app:app --reload             # launch the API and web page
+python eval/run_eval.py              # run the evaluation
+python -m pytest test -v             # run the tests
+rmdir /s chroma_persistent_storage   # clear the old index on Windows
 ```
 
+## Configuration
+
+The main settings are kept in `config.py`:
+
+```python
+@dataclass(frozen=True)
+class Settings:
+    retriever: Literal["bm25", "vector", "hybrid"] = "bm25"
+    generator: Literal["typhoon", "openai"] = "typhoon"
+    n_results: int = 10
+    rrf_k: int = 10
+    bm25_weight: float = 3.0
+    embedding_model: str = "text-embedding-3-small"
+```
+
+**The problem**: before this, the application and evaluator could use different values, so a report might not describe the system that actually ran.
+
+**Fixed**: both now read from the same settings object. I also removed a copied `Retriever_type` value because it became stale when the settings object changed during testing.
+
+## API and tests
+
+The FastAPI endpoint validates the question before sending it into the RAG. It trims spaces, rejects an empty question, and limits the input to 500 characters. The web page also shows loading and error states and disables the ask button while a request is running.
+
+I added 8 tests for:
+
+- a valid `/ask` request
+- empty, whitespace-only, and overlong questions
+- trimming spaces around a question
+- selecting BM25, vector, and hybrid from the shared configuration
+
+The external model call is replaced with a fake answer inside the API test. This makes the test fast, repeatable, and free to run.
 
 ## Findings
 
