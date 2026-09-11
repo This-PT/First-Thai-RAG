@@ -3,25 +3,23 @@ import os
 import sys
 import datetime
 from collections import Counter
-
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import settings
 
 from main import (
-    query_documents,
+    retrieve,
     generate_response,
-    query_bm25,
-    query_hybrid,
     judge,
     GENERATOR,
     model as GENERATOR_MODEL,
 )
 
 QUESTIONS_PATH = os.path.join(os.path.dirname(__file__), "questions.json")
-N_RESULTS = 10
+N_RESULTS = settings.n_results
 MAX_CHARS = 1200
 OVERLAP = 1
 THRESHOLD = 0.75
-Retriever_type = "bm25"
+Retriever_type = settings.retriever
 
 
 def contains(text, keywords):
@@ -30,12 +28,6 @@ def contains(text, keywords):
     return sum(kw in text for kw in keywords) / len(keywords)
 
 
-def retrieve(question, n_results):
-    if Retriever_type == "vec":
-        return query_documents(question, n_results=n_results)
-    if Retriever_type == "bm25":
-        return query_bm25(question, n_results=n_results)
-    return query_hybrid(question, n_results=n_results)
 
 
 def tier_report(label, rows):

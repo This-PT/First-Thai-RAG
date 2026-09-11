@@ -1,0 +1,1220 @@
+{
+  "config": {
+    "generator": "typhoon",
+    "generator_model": "typhoon-v2.5-30b-a3b-instruct",
+    "retriever": "bm25",
+    "n_results": 10,
+    "threshold": 0.75,
+    "metric": "keyword coverage + llm judge",
+    "temperature": 0,
+    "embedding_model": "text-embedding-3-small",
+    "max_chars": 1200,
+    "overlap_paras": 1
+  },
+  "summary": {
+    "easy": {
+      "in_corpus": 43,
+      "negatives": 8,
+      "retrieval_hits": 40,
+      "answer_hits": 41,
+      "refusals": 7
+    },
+    "hard": {
+      "in_corpus": 7,
+      "negatives": 3,
+      "retrieval_hits": 6,
+      "answer_hits": 5,
+      "refusals": 3
+    }
+  },
+  "results": [
+    {
+      "question": "เหตุการณ์ลอบปลงพระชนม์ที่ซาราเจโวเกิดขึ้นเมื่อใด",
+      "difficulty": "easy",
+      "type": "fact — date, stated verbatim",
+      "expected": [
+        "28",
+        "มิถุนายน"
+      ],
+      "gold_snippets": [
+        "28 มิถุนายน 1914"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "เหตุการณ์ลอบปลงพระชนม์ที่ซาราเจโวเกิดขึ้นในวันที่ 28 มิถุนายน 1914",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน โดยระบุวันที่และสถานที่อย่างถูกต้อง"
+    },
+    {
+      "question": "ใครเป็นผู้ลอบยิงมกุฎราชกุมารของออสเตรีย-ฮังการี",
+      "difficulty": "easy",
+      "type": "fact — named person",
+      "expected": [
+        "ปรินซิป"
+      ],
+      "gold_snippets": [
+        "ถูกลอบยิงโดยปรินซิป"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ผู้ลอบยิงมกุฎราชกุมารของออสเตรีย-ฮังการีคือ ปรินซิป (Gavrilo Princip) ซึ่งเป็นสมาชิกขององค์กรลับ \"มือดำ\" (The Black Hand)",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน และมีรายละเอียดเพิ่มเติมเกี่ยวกับองค์กรลับที่ปรินซิปเป็นสมาชิกอยู่ด้วย"
+    },
+    {
+      "question": "ผู้ลงมือลอบปลงพระชนม์เป็นสมาชิกขององค์กรลับใด",
+      "difficulty": "easy",
+      "type": "fact — organization",
+      "expected": [
+        "มือดำ"
+      ],
+      "gold_snippets": [
+        "องค์กรลับ"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ผู้ลงมือลอบปลงพระชนม์เป็นสมาชิกขององค์กรลับ \"มือดำ\" (The Black Hand)",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน"
+    },
+    {
+      "question": "ซาราเจโวเป็นเมืองหลวงของจังหวัดใด",
+      "difficulty": "easy",
+      "type": "fact — place",
+      "expected": [
+        "บอสเนีย"
+      ],
+      "gold_snippets": [
+        "เมืองหลวงของจังหวัด"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ซาราเจโวเป็นเมืองหลวงของจังหวัดบอสเนีย-เฮอร์เซโกวีนา",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน โดยระบุว่า ซาราเจโวเป็นเมืองหลวงของจังหวัดบอสเนีย-เฮอร์เซโกวีนา ซึ่งถูกต้องตามข้อมูลอ้างอิง"
+    },
+    {
+      "question": "ปัจจัยพื้นฐาน 4 ประการที่นำไปสู่สงครามโลกครั้งที่ 1 มีอะไรบ้าง",
+      "difficulty": "easy",
+      "type": "list — requires the enumerated section",
+      "expected": [
+        "ชาตินิยม",
+        "จักรวรรดินิยม",
+        "ทหารนิยม",
+        "พันธมิตร"
+      ],
+      "gold_snippets": [
+        "ลัทธิทหารนิยม"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ปัจจัยพื้นฐาน 4 ประการที่นำไปสู่สงครามโลกครั้งที่ 1 ได้แก่  \n1) ลัทธิชาตินิยม (Nationalism)  \n2) ลัทธิจักรวรรดินิยม (Imperialism)  \n3) ลัทธิทหารนิยม (Militarism)  \n4) ระบบพันธมิตร (Alliances)",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน แม้จะใช้ถ้อยคำที่แตกต่างกัน แต่เนื้อหาสำคัญครบถ้วนและถูกต้อง"
+    },
+    {
+      "question": "ระบบพันธมิตรสามฝ่ายก่อตั้งขึ้นในปีใด และมีประเทศใดบ้าง",
+      "difficulty": "easy",
+      "type": "fact — year + members",
+      "expected": [
+        "1882",
+        "อิตาลี"
+      ],
+      "gold_snippets": [
+        "ระบบพันธมิตรสามฝ่าย"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ระบบพันธมิตรสามฝ่ายก่อตั้งขึ้นในปี 1882 และมีประเทศเยอรมนี ออสเตรียฮังการี และอิตาลี",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน แม้จะมีการใช้ถ้อยคำที่แตกต่างกัน แต่ข้อมูลหลักเกี่ยวกับปีและประเทศที่เกี่ยวข้องถูกต้องครบถ้วน"
+    },
+    {
+      "question": "ชาติใดที่แข่งขันกันสร้างกำลังทางเรือก่อนเกิดสงคราม",
+      "difficulty": "easy",
+      "type": "paraphrase — asks using words not in the source text",
+      "expected": [
+        "อังกฤษ",
+        "เยอรมนี"
+      ],
+      "gold_snippets": [
+        "ราชนาวีอังกฤษและเยอรมัน"
+      ],
+      "missing_snippets": [
+        "ราชนาวีอังกฤษและเยอรมัน"
+      ],
+      "retrieval_score": 0.0,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "ชาติที่แข่งขันกันสร้างกำลังทางเรือก่อนเกิดสงครามคือ อังกฤษและเยอรมนี",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน แม้ถ้อยคำจะต่างกัน แต่เนื้อหาสอดคล้องกันอย่างถูกต้อง"
+    },
+    {
+      "question": "หลังรัสเซียประกาศระดมพล เยอรมนีทำอะไรต่อ และเมื่อใด",
+      "difficulty": "easy",
+      "type": "multi-paragraph — chain of declarations spans several paragraphs",
+      "expected": [
+        "1 สิงหาคม",
+        "รัสเซีย"
+      ],
+      "gold_snippets": [
+        "ประกาศสงครามกับรัสเซียในวันที่"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "หลังรัสเซียประกาศระดมพล เยอรมนียื่นคำขาดให้รัสเซียหยุดการกระทำดังกล่าว แต่รัสเซียไม่ตอบรับ ต่อมาในวันที่ 1 สิงหาคม 1914 เยอรมนีจึงประกาศระดมพล และในวันที่ 2 สิงหาคม 1914 ฝรั่งเศสประกาศระดมพลตาม",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลเกี่ยวกับการยื่นคำขาดของเยอรมนีและการประกาศระดมพลในวันที่ 1 สิงหาคม 1914 ซึ่งตรงกับคำตอบอ้างอิง และยังมีรายละเอียดเพิ่มเติมเกี่ยวกับการประกาศระดมพลของฝรั่งเศสในวันที่ 2 สิงหาคม 1914 ที่ถูกต้อง"
+    },
+    {
+      "question": "แผนการสงครามของเยอรมนีที่กล่าวถึงในเอกสารมีชื่อว่าอะไร",
+      "difficulty": "easy",
+      "type": "rare detail — mentioned once",
+      "expected": [
+        "ชลีเฟน"
+      ],
+      "gold_snippets": [
+        "ชลีเฟน"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "แผนชลีเฟน (The Schlieffen Plan)",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน"
+    },
+    {
+      "question": "ความเป็นกลางของเบลเยียมได้รับการค้ำประกันจากอังกฤษในปีใด",
+      "difficulty": "easy",
+      "type": "rare detail — year deep in the text",
+      "expected": [
+        "1839"
+      ],
+      "gold_snippets": [
+        "ค้ำประกันจากอังกฤษในปี"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "1839",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงครบถ้วน"
+    },
+    {
+      "question": "สยามประกาศสงครามเมื่อใด",
+      "difficulty": "easy",
+      "type": "cross-section — jumps from the WWI half to the Siam half",
+      "expected": [
+        "22",
+        "กรกฎาคม"
+      ],
+      "gold_snippets": [
+        "22 กรกฎาคม 2460"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "สยามประกาศสงครามเมื่อวันที่ 22 กรกฎาคม 2460",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน โดยมีการระบุวันที่อย่างชัดเจน"
+    },
+    {
+      "question": "สยามประกาศสงครามกับประเทศใดบ้าง",
+      "difficulty": "easy",
+      "type": "cross-section — Siam's opponents",
+      "expected": [
+        "เยอรมนี",
+        "ออสเตรีย-ฮังการี"
+      ],
+      "gold_snippets": [
+        "ประกาศสงครามกับเยอรมนีและออสเตรีย-ฮังการี"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "สยามประกาศสงครามกับเยอรมนีและออสเตรีย-ฮังการี",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน แม้ถ้อยคำจะต่างกัน แต่เนื้อหาสำคัญตรงกัน"
+    },
+    {
+      "question": "รัชกาลที่ 6 ทรงศึกษาวิชาการทหารที่โรงเรียนใดในอังกฤษ",
+      "difficulty": "easy",
+      "type": "rare detail — Siam section, single mention",
+      "expected": [
+        "แซนด์เฮิร์สต์"
+      ],
+      "gold_snippets": [
+        "แซนด์เฮิร์สต์"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "รัชกาลที่ 6 ทรงศึกษาวิชาการทหารที่โรงเรียนนายร้อยทหารบกแซนด์เฮิร์สต์ (Sandhurst) ในอังกฤษ.",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน แม้จะมีการเพิ่มเติมรายละเอียดเล็กน้อยเกี่ยวกับสถานที่."
+    },
+    {
+      "question": "เยอรมนีประกาศทำสงครามเรือดำน้ำแบบไม่จำกัดขอบเขตเมื่อใด",
+      "difficulty": "easy",
+      "type": "number — requires precision",
+      "expected": [
+        "1 กุมภาพันธ์",
+        "1917"
+      ],
+      "gold_snippets": [
+        "เรือดำน้ำแบบไม่จำกัดขอบเขต"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "เยอรมนีประกาศทำสงครามเรือดำน้ำแบบไม่จำกัดขอบเขตเมื่อวันที่ 1 กุมภาพันธ์ 1917",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน แม้ถ้อยคำจะต่างกัน แต่เนื้อหาสำคัญถูกต้องและครบถ้วน"
+    },
+    {
+      "question": "สงครามโลกครั้งที่ 2 สิ้นสุดลงเมื่อใด",
+      "difficulty": "easy",
+      "type": "NEGATIVE — not in the corpus. PASS = the system refuses.",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "gold_snippets": [],
+      "missing_snippets": [],
+      "retrieval_score": null,
+      "answer_score": 0.0,
+      "retrieval_pass": null,
+      "answer_pass": false,
+      "answer": "สงครามโลกครั้งที่ 2 สิ้นสุดลงในปี ค.ศ. 1939 ตามที่ระบุในข้อความว่า \"ต่อมาในปี 2482 (ค.ศ. 1939) สงครามเบ็ดเสร็จก็เกิดขึ้นอีกครั้งในความหมายของ 'สงครามโลกครั้งที่ 2'\"",
+      "judge_verdict": "incorrect",
+      "judge_reason": "คำตอบของระบบระบุวันที่สิ้นสุดสงครามโลกครั้งที่ 2 ผิด โดยสงครามโลกครั้งที่ 2 สิ้นสุดในปี ค.ศ. 1945 ไม่ใช่ปี 1939"
+    },
+    {
+      "question": "สงครามเย็นเริ่มต้นเมื่อใด",
+      "difficulty": "easy",
+      "type": "NEGATIVE — near miss, same era different war",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "gold_snippets": [],
+      "missing_snippets": [],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": null,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงที่ระบุว่าไม่ทราบ"
+    },
+    {
+      "question": "รัชกาลที่ 9 ขึ้นครองราชย์เมื่อใด",
+      "difficulty": "easy",
+      "type": "NEGATIVE — near miss, Thai history outside the period",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "gold_snippets": [],
+      "missing_snippets": [],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": null,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงที่ระบุว่าไม่ทราบ"
+    },
+    {
+      "question": "ใครเป็นผู้ก่อตั้งองค์การสหประชาชาติ",
+      "difficulty": "easy",
+      "type": "NEGATIVE — clearly outside",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "gold_snippets": [],
+      "missing_snippets": [],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": null,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงที่ระบุว่าไม่ทราบ"
+    },
+    {
+      "question": "โทรศัพท์มือถือเครื่องแรกผลิตในปีใด",
+      "difficulty": "easy",
+      "type": "NEGATIVE — clearly outside",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "gold_snippets": [],
+      "missing_snippets": [],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": null,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงที่ระบุว่าไม่ทราบ"
+    },
+    {
+      "question": "รัสเซียประกาศระดมพลใหญ่เมื่อใด",
+      "difficulty": "easy",
+      "type": "fact — date, Russian mobilisation",
+      "expected": [
+        "30",
+        "กรกฎาคม"
+      ],
+      "gold_snippets": [
+        "ประกาศระดมพลใหญ่ในวันที่ 30 กรกฎาคม"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "รัสเซียประกาศระดมพลใหญ่ในวันที่ 30 กรกฎาคม",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน โดยระบุวันที่ 30 กรกฎาคม ซึ่งตรงกันกับคำตอบอ้างอิง"
+    },
+    {
+      "question": "จักรวรรดิเยอรมันประกาศหยุดยิงเมื่อใด",
+      "difficulty": "easy",
+      "type": "fact — date, German armistice",
+      "expected": [
+        "11",
+        "พฤศจิกายน"
+      ],
+      "gold_snippets": [
+        "ประกาศหยุดยิงในวันที่ 11 พฤศจิกายน"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "จักรวรรดิเยอรมันประกาศหยุดยิงในวันที่ 11 พฤศจิกายน 1918",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน โดยระบุวันที่หยุดยิงอย่างชัดเจน"
+    },
+    {
+      "question": "จักรวรรดิใดบ้างที่ล่มสลายหลังสงครามโลกครั้งที่ 1",
+      "difficulty": "easy",
+      "type": "list — requires the enumerated section",
+      "expected": [
+        "เยอรมัน",
+        "ออสเตรีย-ฮังการี",
+        "รัสเซีย",
+        "ออตโตมัน"
+      ],
+      "gold_snippets": [
+        "สี่จักรวรรดิใหญ่ของโลกได้สิ้นสุดลง"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "จักรวรรดิที่ล่มสลายหลังสงครามโลกครั้งที่ 1 ได้แก่ จักรวรรดิเยอรมัน จักรวรรดิออสเตรีย-ฮังการี จักรวรรดิรัสเซีย และจักรวรรดิออตโตมัน",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน แม้ถ้อยคำจะต่างกัน แต่เนื้อหาสาระตรงกันทั้งหมด"
+    },
+    {
+      "question": "องค์กรระดับโลกใดถูกจัดตั้งขึ้นหลังสงครามโลกครั้งที่ 1",
+      "difficulty": "easy",
+      "type": "fact — organisation founded after the war",
+      "expected": [
+        "สันนิบาตชาติ"
+      ],
+      "gold_snippets": [
+        "สันนิบาตชาติ"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "สันนิบาตชาติ",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน"
+    },
+    {
+      "question": "มีประชาชนถูกระดมเข้าสู่กองทัพในสงครามโลกครั้งที่ 1 ประมาณกี่คน",
+      "difficulty": "easy",
+      "type": "number — total mobilised",
+      "expected": [
+        "70",
+        "ล้าน"
+      ],
+      "gold_snippets": [
+        "ประชาชนประมาณ 70 ล้านคนถูกระดมเข้าสู่"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ประมาณ 70 ล้านคน",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงครบถ้วน"
+    },
+    {
+      "question": "ความสูญเสียทางทหารของทั้งสองฝ่ายรวมกันมีจำนวนเท่าใด",
+      "difficulty": "easy",
+      "type": "number — total casualties",
+      "expected": [
+        "38.8",
+        "ล้าน"
+      ],
+      "gold_snippets": [
+        "มีจำนวนมากถึง 38.8 ล้านนาย"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 0.5,
+      "retrieval_pass": true,
+      "answer_pass": false,
+      "answer": "16.4 ล้านนาย",
+      "judge_verdict": "incorrect",
+      "judge_reason": "คำตอบของระบบไม่ตรงกับคำตอบอ้างอิง และให้ข้อมูลที่ผิดเกี่ยวกับจำนวนความสูญเสียทางทหารของทั้งสองฝ่ายรวมกัน"
+    },
+    {
+      "question": "ฝ่ายสัมพันธมิตรใช้งบประมาณทางทหารในสงครามเท่าใด",
+      "difficulty": "easy",
+      "type": "number — war cost",
+      "expected": [
+        "58",
+        "พันล้าน"
+      ],
+      "gold_snippets": [
+        "58 พันล้านเหรียญสหรัฐ"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ฝ่ายสัมพันธมิตรใช้งบประมาณทางทหารสูงถึง 58 พันล้านเหรียญสหรัฐ",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน โดยใช้ถ้อยคำที่แตกต่างกัน แต่ยังคงความหมายเดิมไว้"
+    },
+    {
+      "question": "ประเทศใดในฝ่ายมหาอำนาจกลางประกาศยอมแพ้เป็นประเทศแรก",
+      "difficulty": "easy",
+      "type": "fact — first Central Power to surrender",
+      "expected": [
+        "บัลแกเรีย"
+      ],
+      "gold_snippets": [
+        "บัลแกเรียเป็นประเทศแรกที่ประกาศยอมแพ้"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "บัลแกเรีย",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงครบถ้วน"
+    },
+    {
+      "question": "ทหารคนสุดท้ายที่เสียชีวิตก่อนการหยุดยิงมีชื่อว่าอะไร",
+      "difficulty": "easy",
+      "type": "rare detail — mentioned once",
+      "expected": [
+        "Price",
+        "Gunther"
+      ],
+      "gold_snippets": [
+        "George L. Price"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 0.5,
+      "retrieval_pass": true,
+      "answer_pass": false,
+      "answer": "ชื่อของทหารคนสุดท้ายที่เสียชีวิตก่อนการหยุดยิงคือ Henry Gunther (อเมริกัน)",
+      "judge_verdict": "partial",
+      "judge_reason": "คำตอบของระบบระบุชื่อทหารคนสุดท้ายที่เสียชีวิตก่อนการหยุดยิงเพียงคนเดียวคือ Henry Gunther แต่ไม่รวมถึง George L. Price ซึ่งเป็นอีกคนที่ถูกกล่าวถึงในคำตอบอ้างอิง ทำให้ข้อมูลไม่ครบถ้วน."
+    },
+    {
+      "question": "ใครเป็นผู้เรียกสงครามนี้ว่า \"สงครามโลกครั้งที่หนึ่ง\" เป็นคนแรก",
+      "difficulty": "easy",
+      "type": "rare detail — mentioned once",
+      "expected": [
+        "Haeckel"
+      ],
+      "gold_snippets": [
+        "Ernst Haeckel"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "Ernst Haeckel",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงครบถ้วน"
+    },
+    {
+      "question": "สยามส่งกองทหารบกรถยนต์ไปร่วมสงครามประมาณกี่นาย",
+      "difficulty": "easy",
+      "type": "cross-section — Siam troop numbers",
+      "expected": [
+        "850"
+      ],
+      "gold_snippets": [
+        "กองทหารบกรถยนต์ประมาณ 850 นาย"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "สยามส่งกองทหารบกรถยนต์ประมาณ 850 นาย",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน"
+    },
+    {
+      "question": "กองทหารอาสาของสยามออกเดินทางจากสยามเมื่อใด",
+      "difficulty": "easy",
+      "type": "cross-section — departure date",
+      "expected": [
+        "15",
+        "มิถุนายน"
+      ],
+      "gold_snippets": [
+        "ออกเดินทางจากสยามในวันที่ 15 มิถุนายน"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "15 มิถุนายน 1918 (พ.ศ. 2461)",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน โดยระบุวันที่และปีในรูปแบบที่ถูกต้อง"
+    },
+    {
+      "question": "อนุสาวรีย์ทหารอาสาสงครามโลกครั้งที่ 1 ตั้งอยู่ที่ใด",
+      "difficulty": "easy",
+      "type": "rare detail — Siam section, single mention",
+      "expected": [
+        "สนามหลวง"
+      ],
+      "gold_snippets": [
+        "หัวมุมสนามหลวงใกล้กับโรงละคร"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "อนุสาวรีย์ทหารอาสาสงครามโลกครั้งที่ 1 ตั้งอยู่ที่หัวมุมสนามหลวงใกล้กับโรงละครแห่งชาติ หรือที่รู้จักกันในชื่อ \"วงเวียน 22 กรกฎาคม\"",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลที่ตรงกับคำตอบอ้างอิงครบถ้วน และมีรายละเอียดเพิ่มเติมที่ถูกต้องเกี่ยวกับชื่อ 'วงเวียน 22 กรกฎาคม'"
+    },
+    {
+      "question": "วันที่ 28 มิถุนายน เป็นวันครบรอบการรบใดของนักชาตินิยมเซอร์เบีย",
+      "difficulty": "easy",
+      "type": "rare detail — year deep in the text",
+      "expected": [
+        "โคโซโว"
+      ],
+      "gold_snippets": [
+        "รบที่โคโซโว"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "วันที่ 28 มิถุนายน เป็นวันครบรอบ \"การรบที่โคโซโว\" ในปี 1389",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน โดยระบุวันและปีของการรบที่โคโซโว"
+    },
+    {
+      "question": "รัชกาลที่ 6 เสด็จไปศึกษาที่อังกฤษตั้งแต่พระชนมายุเท่าใด",
+      "difficulty": "easy",
+      "type": "cross-section — Rama VI education",
+      "expected": [
+        "13"
+      ],
+      "gold_snippets": [
+        "ชนมายุได้ 13 พรรษา"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "รัชกาลที่ 6 เสด็จไปศึกษาที่อังกฤษตั้งแต่พระชนมายุได้ 13 พรรษา",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน โดยใช้ถ้อยคำที่แตกต่างกันแต่มีความหมายเดียวกัน"
+    },
+    {
+      "question": "สยามแก้ไขสนธิสัญญากับสหรัฐอเมริกาสำเร็จในปีใด",
+      "difficulty": "easy",
+      "type": "cross-section — treaty revision",
+      "expected": [
+        "2463"
+      ],
+      "gold_snippets": [
+        "สหรัฐฯ ใน พ.ศ. 2463"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "พ.ศ. 2463",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน"
+    },
+    {
+      "question": "เยอรมนีให้สัญญาสนับสนุนออสเตรีย-ฮังการีอย่างไม่มีเงื่อนไข เรียกนโยบายนี้ว่าอะไร",
+      "difficulty": "easy",
+      "type": "paraphrase — asks using words not in the source text",
+      "expected": [
+        "เช็คเปล่า"
+      ],
+      "gold_snippets": [
+        "เช็คเปล่า"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "เรียกนโยบายนี้ว่า \"เช็คเปล่า\" (blank cheque)",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน โดยใช้คำว่า 'เช็คเปล่า' และคำแปล 'blank cheque' ถูกต้อง"
+    },
+    {
+      "question": "รัสปูตินเกิดอะไรขึ้นหลังเหตุการณ์ลอบปลงพระชนม์ที่ซาราเจโว 2 สัปดาห์",
+      "difficulty": "easy",
+      "type": "multi-paragraph — Rasputin",
+      "expected": [
+        "แทง"
+      ],
+      "gold_snippets": [
+        "ถูกผู้หญิงคนหนึ่งแทงที่ช่องท้อง"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "หลังเหตุการณ์ลอบปลงพระชนม์ที่ซาราเจโว 2 สัปดาห์ รัสปูตินถูกผู้หญิงคนหนึ่งแทงที่ช่องท้องและไปพักฟื้นในโรงพยาบาลในไซบีเรีย",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน และมีรายละเอียดเพิ่มเติมที่ถูกต้องเกี่ยวกับการพักฟื้นในโรงพยาบาลในไซบีเรีย"
+    },
+    {
+      "question": "สนธิสัญญาแวร์ซายลงนามเมื่อวันที่เท่าใด",
+      "difficulty": "easy",
+      "type": "NEGATIVE — near miss, very plausible",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "gold_snippets": [],
+      "missing_snippets": [],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": null,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงที่ระบุว่าไม่ทราบ"
+    },
+    {
+      "question": "การปฏิวัติสยาม พ.ศ. 2475 เกิดขึ้นเพราะอะไร",
+      "difficulty": "easy",
+      "type": "NEGATIVE — near miss, Thai history outside the period",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "gold_snippets": [],
+      "missing_snippets": [],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": null,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงที่ระบุว่าไม่ทราบ"
+    },
+    {
+      "question": "อินเทอร์เน็ตถูกประดิษฐ์ขึ้นในปีใด",
+      "difficulty": "easy",
+      "type": "NEGATIVE — clearly outside",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "gold_snippets": [],
+      "missing_snippets": [],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": null,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงที่ระบุว่าไม่ทราบ"
+    },
+    {
+      "question": "อังกฤษประกาศสงครามกับเยอรมนีเมื่อใด",
+      "difficulty": "easy",
+      "type": "fact — date, British declaration",
+      "expected": [
+        "4",
+        "สิงหาคม"
+      ],
+      "gold_snippets": [
+        "ประกาศสงครามกับเยอรมนี ในวันที่ 4 สิงหาคม"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "อังกฤษประกาศสงครามกับเยอรมนีในวันที่ 4 สิงหาคม",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน โดยระบุวันที่ 4 สิงหาคม ซึ่งตรงกับข้อมูลในคำตอบอ้างอิง"
+    },
+    {
+      "question": "สยามส่งทหารอาสากองบินทหารบกไปประมาณกี่นาย และหน่วยนี้เป็นต้นกำเนิดของอะไร",
+      "difficulty": "easy",
+      "type": "cross-section — Siam air unit, number + significance",
+      "expected": [
+        "400",
+        "กองทัพอากาศ"
+      ],
+      "gold_snippets": [
+        "ทหารอาสากองบินทหารบกประมาณ 400 นาย"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "สยามส่งทหารอาสากองบินทหารบกประมาณ 400 นาย และหน่วยนี้เป็นต้นกำเนิดของกองทัพอากาศไทยในปัจจุบัน",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วนและถูกต้อง"
+    },
+    {
+      "question": "จักรวรรดิออตโตมันกลายเป็นประเทศใหม่ชื่อว่าอะไร",
+      "difficulty": "easy",
+      "type": "fact — post-war state formation",
+      "expected": [
+        "ตุรกี"
+      ],
+      "gold_snippets": [
+        "จักรวรรดิออตโตมันกลายเป็นประเทศใหม่"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ตุรกี",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงครบถ้วน"
+    },
+    {
+      "question": "สยามยึดเรือของเยอรมันที่อยู่ในน่านน้ำสยามได้กี่ลำ",
+      "difficulty": "easy",
+      "type": "number — Siam section, seized ships",
+      "expected": [
+        "8"
+      ],
+      "gold_snippets": [
+        "เรือของเยอรมันที่ลอยอยู่ในน่านน้ำสยาม รวมด้วยกัน 8 ลำ"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "8 ลำ",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน"
+    },
+    {
+      "question": "ถนนในกรุงเทพฯ ที่สร้างขึ้นเพื่อเป็นอนุสรณ์การเข้าร่วมสงครามโลกครั้งที่ 1 มีชื่อว่าอะไรบ้าง",
+      "difficulty": "easy",
+      "type": "list — Siam section, three street names",
+      "expected": [
+        "ไมตรีจิตต์",
+        "มิตรสัมพันธ์",
+        "สันติภาพ"
+      ],
+      "gold_snippets": [
+        "ถนนไมตรีจิตต์ ถนนมิตรสัมพันธ์ ถนนสันติภาพ"
+      ],
+      "missing_snippets": [
+        "ถนนไมตรีจิตต์ ถนนมิตรสัมพันธ์ ถนนสันติภาพ"
+      ],
+      "retrieval_score": 0.0,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "ถนนในกรุงเทพฯ ที่สร้างขึ้นเพื่อเป็นอนุสรณ์การเข้าร่วมสงครามโลกครั้งที่ 1 มีชื่อว่า ถนนไมตรีจิตต์ ถนนมิตรสัมพันธ์ และถนนสันติภาพ",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน แม้ถ้อยคำจะต่างกัน แต่เนื้อหาสำคัญครบถ้วน"
+    },
+    {
+      "question": "ชื่อเดิมของสงครามโลกครั้งที่ 1 คืออะไร และถูกริเริ่มจากนิตยสารใด",
+      "difficulty": "easy",
+      "type": "rare detail — origin of the name \"The Great War\"",
+      "expected": [
+        "มหาสงคราม",
+        "Maclean"
+      ],
+      "gold_snippets": [
+        "\"มหาสงคราม\" (The Great War) ชื่อนี้ถูกริเริ่มจาก Maclean's Magazine"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ชื่อเดิมของสงครามโลกครั้งที่ 1 คือ \"มหาสงคราม\" (The Great War) และถูกริเริ่มจาก Maclean's Magazine ที่ออกในแคนาดา ฉบับเดือนตุลาคม 1914",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน แม้ถ้อยคำจะต่างกัน แต่เนื้อหาสำคัญครบถ้วนถูกต้อง"
+    },
+    {
+      "question": "อังกฤษเป็นหนี้สงครามกับสหรัฐฯ เท่าใด",
+      "difficulty": "easy",
+      "type": "number — war debt",
+      "expected": [
+        "4.4",
+        "พันล้าน"
+      ],
+      "gold_snippets": [
+        "อังกฤษเป็นหนี้สงครามกับสหรัฐฯ ถึง 4.4 พันล้านเหรียญสหรัฐ"
+      ],
+      "missing_snippets": [
+        "อังกฤษเป็นหนี้สงครามกับสหรัฐฯ ถึง 4.4 พันล้านเหรียญสหรัฐ"
+      ],
+      "retrieval_score": 0.0,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "อังกฤษเป็นหนี้สงครามกับสหรัฐฯ ถึง 4.4 พันล้านเหรียญสหรัฐ",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน แม้ถ้อยคำจะต่างกัน แต่เนื้อหาสำคัญถูกต้อง"
+    },
+    {
+      "question": "สยามออกประกาศนโยบายเป็นกลางเมื่อใด",
+      "difficulty": "easy",
+      "type": "cross-section — Siam neutrality declaration date",
+      "expected": [
+        "6",
+        "สิงหาคม",
+        "2457"
+      ],
+      "gold_snippets": [
+        "ในวันที่ 6 สิงหาคม 2457 ได้ออกประกาศนโยบายเป็นกลาง"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "6 สิงหาคม 2457",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงครบถ้วน"
+    },
+    {
+      "question": "ประธานคณะเสนาธิการกองทัพออสเตรีย-ฮังการีในขณะนั้นชื่อว่าอะไร",
+      "difficulty": "easy",
+      "type": "rare detail — named general, single mention",
+      "expected": [
+        "Conrad",
+        "Hötzendorf"
+      ],
+      "gold_snippets": [
+        "นายพล Conrad von Hötzendorf ประธานคณะเสนาธิการกองทัพออสเตรีย-ฮังการี"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "ประธานคณะเสนาธิการกองทัพออสเตรีย-ฮังการีในขณะนั้นชื่อว่า นายพล Conrad von Hötzendorf",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน"
+    },
+    {
+      "question": "หลังเยอรมนีประกาศยอมแพ้ พระเจ้าไกเซอร์เสด็จลี้ภัยไปประเทศใด",
+      "difficulty": "easy",
+      "type": "rare detail — end of the war, single mention",
+      "expected": [
+        "เนเธอร์แลนด์"
+      ],
+      "gold_snippets": [
+        "พระเจ้าไกเซอร์อพยพลี้ภัยไปเนเธอร์แลนด์"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "เนเธอร์แลนด์",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงครบถ้วน"
+    },
+    {
+      "question": "อังกฤษเสนอให้ชาติใดบ้างทำหน้าที่ไกล่เกลี่ยวิกฤตการณ์ในบอลข่าน",
+      "difficulty": "easy",
+      "type": "paraphrase — asks using words not in the source text",
+      "expected": [
+        "อิตาลี",
+        "เยอรมนี",
+        "ฝรั่งเศส",
+        "อังกฤษ"
+      ],
+      "gold_snippets": [
+        "ได้แก่ อิตาลี เยอรมนี ฝรั่งเศส และอังกฤษ ทำหน้าที่เป็น \"คนกลาง\""
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "อังกฤษเสนอให้ 4 ชาติมหาอำนาจที่ไม่เกี่ยวข้องโดยตรงกับวิกฤตการณ์ในบอลข่าน ได้แก่ อิตาลี เยอรมนี ฝรั่งเศส และอังกฤษ ทำหน้าที่เป็น \"คนกลาง\" เพื่อเปิดการเจรจาระหว่างออสเตรีย-ฮังการี เซอร์เบีย และรัสเซีย",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลครบถ้วนเกี่ยวกับชาติที่อังกฤษเสนอให้ทำหน้าที่ไกล่เกลี่ยวิกฤตการณ์ในบอลข่าน และมีรายละเอียดเพิ่มเติมที่ถูกต้องเกี่ยวกับบทบาทของชาติที่เสนอ."
+    },
+    {
+      "question": "สยามประกาศสงคราม เกิดขึ้นก่อนหรือหลังเยอรมนีประกาศทำสงครามเรือดำน้ำแบบไม่จำกัดขอบเขต",
+      "difficulty": "hard",
+      "type": "multi-hop — two sections + BE/CE conversion",
+      "expected": [
+        "หลัง"
+      ],
+      "gold_snippets": [
+        "22 กรกฎาคม 2460",
+        "เรือดำน้ำแบบไม่จำกัดขอบเขต"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "สยามประกาศสงครามหลังจากเยอรมนีประกาศทำสงครามเรือดำน้ำแบบไม่จำกัดขอบเขต\n\nเหตุผล:  \n- เยอรมนีประกาศทำสงครามเรือดำน้ำแบบไม่จำกัดขอบเขตในวันที่ 1 กุมภาพันธ์ 1917  \n- สยามประกาศสงครามกับเยอรมนีในวันที่ 22 กรกฎาคม พ.ศ. 2460 (ค.ศ. 1917)  \n\nดังนั้น สยามประกาศสงครามหลังจากเยอรมนีประกาศทำสงครามเรือดำน้ำแบบไม่จำกัดขอบเขตแล้ว",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน โดยระบุว่า สยามประกาศสงครามหลังจากเยอรมนีประกาศทำสงครามเรือดำน้ำแบบไม่จำกัดขอบเขต พร้อมทั้งให้วันที่ที่ถูกต้องของทั้งสองเหตุการณ์"
+    },
+    {
+      "question": "สยามส่งทหารอาสาทั้งกองทหารบกรถยนต์และกองบินทหารบก รวมกันประมาณกี่นาย",
+      "difficulty": "hard",
+      "type": "aggregation — the sum is never stated in the corpus",
+      "expected": [
+        "1,250"
+      ],
+      "gold_snippets": [
+        "ประมาณ 850 นาย",
+        "ประมาณ 400 นาย"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "สยามส่งกองทหารบกรถยนต์ประมาณ 850 นาย และทหารอาสากองบินทหารบกประมาณ 400 นาย\n\nรวมกัน = 850 + 400 = 1,250 นาย\n\nดังนั้น คำตอบคือ 1,250 นาย",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลครบถ้วนเกี่ยวกับจำนวนทหารอาสาทั้งกองทหารบกรถยนต์และกองบินทหารบก รวมถึงการคำนวณที่ถูกต้องและสอดคล้องกับคำตอบอ้างอิง"
+    },
+    {
+      "question": "เยอรมนีประกาศสงครามกับรัสเซีย ก่อนหรือหลังอังกฤษประกาศสงครามกับเยอรมนี",
+      "difficulty": "hard",
+      "type": "ordering — two dates in different paragraphs",
+      "expected": [
+        "ก่อน"
+      ],
+      "gold_snippets": [
+        "1 สิงหาคม",
+        "4 สิงหาคม"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "เยอรมนีประกาศสงครามกับรัสเซียก่อนอังกฤษประกาศสงครามกับเยอรมนี\n\nจากข้อความ:  \n\"เยอรมนีก็ประกาศสงครามกับรัสเซียในวันที่ 1 สิงหาคม และฝรั่งเศสประกาศ\"  \n\"อังกฤษจึงประกาศสงครามกับเยอรมนี ในวันที่ 4 สิงหาคม\"\n\nดังนั้น เยอรมนีประกาศสงครามกับรัสเซียก่อนอังกฤษประกาศสงครามกับเยอรมนี",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน โดยระบุว่าเยอรมนีประกาศสงครามกับรัสเซียก่อนอังกฤษประกาศสงครามกับเยอรมนี และมีรายละเอียดเพิ่มเติมเกี่ยวกับวันที่ที่ถูกต้อง."
+    },
+    {
+      "question": "ประเทศที่พระเจ้าไกเซอร์เสด็จลี้ภัยไป เป็นประเทศเดียวกับที่อังกฤษค้ำประกันความเป็นกลางไว้ในปี 1839 หรือไม่",
+      "difficulty": "hard",
+      "type": "comparison — two facts, correct answer is a negation",
+      "expected": [
+        "ไม่ใช่",
+        "เนเธอร์แลนด์",
+        "เบลเยียม"
+      ],
+      "gold_snippets": [
+        "เนเธอร์แลนด์",
+        "ค้ำประกันจากอังกฤษในปี"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 0.0,
+      "retrieval_pass": true,
+      "answer_pass": false,
+      "answer": "ใช่",
+      "judge_verdict": "incorrect",
+      "judge_reason": "คำตอบของระบบระบุว่า 'ใช่' ซึ่งไม่ถูกต้อง เนื่องจากคำตอบอ้างอิงระบุว่าไกเซอร์ลี้ภัยไปเนเธอร์แลนด์ และอังกฤษค้ำประกันความเป็นกลางไว้ในปี 1839 คือเบลเยียม"
+    },
+    {
+      "question": "สยามดำรงสถานะเป็นกลางอยู่นานประมาณเท่าใดก่อนประกาศสงคราม",
+      "difficulty": "hard",
+      "type": "duration — subtract two dates from two different sections",
+      "expected": [
+        "3",
+        "ปี"
+      ],
+      "gold_snippets": [
+        "6 สิงหาคม 2457",
+        "22 กรกฎาคม 2460"
+      ],
+      "missing_snippets": [
+        "22 กรกฎาคม 2460"
+      ],
+      "retrieval_score": 0.5,
+      "answer_score": 1.0,
+      "retrieval_pass": false,
+      "answer_pass": true,
+      "answer": "สยามดำรงสถานะเป็นกลางมาตลอดช่วงสามปีแรกของสงครามโลกครั้งที่ 1 จนกระทั่งวันที่ 22 กรกฎาคม 1917 (พ.ศ. 2460) จึงประกาศสงครามกับเยอรมนีและออสเตรีย-ฮังการี\n\nดังนั้น สยามดำรงสถานะเป็นกลางอยู่ประมาณ **3 ปี** ก่อนประกาศสงคราม.",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน โดยระบุระยะเวลาที่สยามดำรงสถานะเป็นกลางและวันที่ประกาศสงครามอย่างถูกต้อง"
+    },
+    {
+      "question": "กษัตริย์สยามในช่วงสงครามโลกครั้งที่ 1 เคยไปเรียนวิชาทหารที่ไหน และไปตอนอายุเท่าไร",
+      "difficulty": "hard",
+      "type": "register mismatch — plain wording, corpus uses ราชาศัพท์",
+      "expected": [
+        "แซนด์เฮิร์สต์",
+        "13"
+      ],
+      "gold_snippets": [
+        "แซนด์เฮิร์สต์",
+        "ชนมายุได้ 13 พรรษา"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 1.0,
+      "retrieval_pass": true,
+      "answer_pass": true,
+      "answer": "กษัตริย์สยามในช่วงสงครามโลกครั้งที่ 1 คือรัชกาลที่ 6 ได้ไปเรียนวิชาทหารที่โรงเรียนนายร้อยทหารบกแซนด์เฮิร์สต์ (Sandhurst) โดยเสด็จไปศึกษาที่ประเทศอังกฤษตั้งแต่พระชนมายุได้ 13 พรรษา",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน โดยระบุชื่อโรงเรียน สถานที่ และอายุที่ไปเรียนได้ถูกต้อง"
+    },
+    {
+      "question": "ความสูญเสียทางทหารคิดเป็นสัดส่วนประมาณเท่าใดของจำนวนคนที่ถูกระดมเข้าสู่กองทัพทั้งหมด",
+      "difficulty": "hard",
+      "type": "ratio — both numbers present, the comparison is not",
+      "expected": [
+        "ครึ่ง"
+      ],
+      "gold_snippets": [
+        "70 ล้านคนถูกระดมเข้าสู่",
+        "38.8 ล้านนาย"
+      ],
+      "missing_snippets": [],
+      "retrieval_score": 1.0,
+      "answer_score": 0.0,
+      "retrieval_pass": true,
+      "answer_pass": false,
+      "answer": "ความสูญเสียทางทหารคิดเป็นสัดส่วนประมาณ 55% ของจำนวนคนที่ถูกระดมเข้าสู่กองทัพทั้งหมด\n\n**คำอธิบาย:**  \nจากข้อความ:  \n- จำนวนคนที่ถูกระดมเข้าสู่กองทัพทั้งหมด = 70 ล้านคน  \n- ความสูญเสียทางทหาร = 38.8 ล้านนาย  \n\nคำนวณสัดส่วน:  \n(38.8 ÷ 70) × 100 ≈ 55.43% → ประมาณ 55%",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบให้ข้อมูลตรงกับคำตอบอ้างอิงครบถ้วน โดยระบุสัดส่วนความสูญเสียทางทหารเป็นประมาณ 55% ซึ่งสอดคล้องกับข้อมูลในคำตอบอ้างอิง."
+    },
+    {
+      "question": "ทหารอาสาของสยามเสียชีวิตในสงครามกี่นาย",
+      "difficulty": "hard",
+      "type": "NEGATIVE — near miss, corpus is full of Siamese troop numbers but not this one",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "gold_snippets": [],
+      "missing_snippets": [],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": null,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงที่ระบุว่าไม่ทราบ"
+    },
+    {
+      "question": "สนธิสัญญาแวร์ซายกำหนดค่าปฏิกรรมสงครามให้เยอรมนีจ่ายเท่าใด",
+      "difficulty": "hard",
+      "type": "NEGATIVE — near miss, corpus covers the aftermath but not the treaty terms",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "gold_snippets": [],
+      "missing_snippets": [],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": null,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงที่ระบุว่าไม่ทราบ"
+    },
+    {
+      "question": "กองทหารอาสาของสยามเข้าร่วมรบในแนวรบด้านตะวันออกที่ใดบ้าง",
+      "difficulty": "hard",
+      "type": "NEGATIVE — false premise about the Siam section",
+      "expected": [
+        "ไม่ทราบ"
+      ],
+      "gold_snippets": [],
+      "missing_snippets": [],
+      "retrieval_score": null,
+      "answer_score": 1.0,
+      "retrieval_pass": null,
+      "answer_pass": true,
+      "answer": "ไม่ทราบ",
+      "judge_verdict": "correct",
+      "judge_reason": "คำตอบของระบบตรงกับคำตอบอ้างอิงที่ระบุว่าไม่ทราบ"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import  BaseModel, Field, field_validator
 from main import answer_question
 from fastapi.responses import HTMLResponse
 import time, logging
@@ -8,7 +8,18 @@ import time, logging
 app = FastAPI()
 
 class Q(BaseModel):
-    question: str
+    question: str = Field(min_length=1, max_length=500)
+
+    @field_validator("question")
+    @classmethod
+    def validate_question(cls, value: str) -> str:
+        value = value.strip()
+
+        if not value:
+            raise ValueError("Question cannot be empty")
+
+        return value
+
 
 @app.post("/ask")
 def ask(q: Q):
@@ -29,21 +40,50 @@ PAGE = """
 <body>
 <h2>ถามเกี่ยวกับสงครามโลกครั้งที่ 1</h2>
 <textarea id="q" placeholder="ซาราเจโวเป็นเมืองหลวงของจังหวัดใด"></textarea>
-<button onclick="ask()">ถาม</button>
-<div id="out"></div>
+<button id="askButton" onclick="ask()">ถาม</button><div id="out"></div>
 <script>
-async function ask(){
-  const out = document.getElementById('out');
-  out.textContent = 'กำลังคิด...';
-  const t0 = performance.now();
-  const r = await fetch('/ask', {
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({question: document.getElementById('q').value})
-  });
-  const d = await r.json();
-  const ms = Math.round(performance.now() - t0);
-  out.textContent = d.answer + `\n\n(${(ms/1000).toFixed(1)}s)`;
+async function ask() {
+  const question = document.getElementById("q").value.trim();
+  const output = document.getElementById("out");
+  const button = document.getElementById("askButton");
+
+  if (!question) {
+    output.textContent = "กรุณาใส่คำถาม";
+    return;
+  }
+
+  button.disabled = true;
+  output.textContent = "กำลังคิด...";
+
+  const start = performance.now();
+
+  try {
+    const response = await fetch("/ask", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ question })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error("ไม่สามารถประมวลผลคำถามได้");
+    }
+
+    const milliseconds = performance.now() - start;
+
+    output.textContent =
+      data.answer +
+      `\n\n(${(milliseconds / 1000).toFixed(1)}s)`;
+  } catch (error) {
+    output.textContent =
+      "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง";
+    console.error(error);
+  } finally {
+    button.disabled = false;
+  }
 }
 </script>
 </body></html>

@@ -12,18 +12,19 @@ from pythainlp.tokenize import word_tokenize
 from fastapi import FastAPI
 import time
 import json
+from config import settings
+
 
 load_dotenv()
-
 openai_key = os.getenv("OPENAI_API_KEY")
-
 openai_ef = embedding_functions.OpenAIEmbeddingFunction(
-    api_key=openai_key,model_name="text-embedding-3-small"
+    api_key=openai_key,model_name=settings.embedding_model
 )
-
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # DATA_DIR = os.path.join(BASE_DIR, "data")
+
+
 
 
 chroma_client = chromadb.PersistentClient(path=os.path.join(BASE_DIR, "chroma_persistent_storage"))
@@ -63,15 +64,14 @@ def load_documents_from_directory(directory_path):
 # directory_path = "./data"
 directory_path = os.path.join(os.path.dirname(__file__), "data")
 
-documents = load_documents_from_directory(directory_path)
 
 def get_openai_embedding(text,idx = None):
-    response = client.embeddings.create(input=text, model="text-embedding-3-small")
+    response = client.embeddings.create(input=text, model=settings.embedding_model)
     embedding = response.data[0].embedding
     if idx is not None and idx % 100 == 0 :print("==== Generating embeddings... ====")
     return embedding
 def build_index(directory_path=directory_path):
-
+    documents = load_documents_from_directory(directory_path)
     chunked_documents = []
     for doc in documents:
         chunks = split_thai(doc["text"])
@@ -100,13 +100,13 @@ chunk_by_id = dict(zip(all_ids, all_chunks))
 bm25 = BM25Okapi([word_tokenize(c, engine="newmm") for c in all_chunks])
 
 
-def query_bm25(question, n_results=10):
+def query_bm25(question, n_results=settings.n_results):
     scores = bm25.get_scores(word_tokenize(question, engine="newmm"))
     top = sorted(range(len(scores)), key=lambda i: -scores[i])[:n_results]
     return [all_chunks[i] for i in top]
 
 
-def query_documents(question, n_results=10):
+def query_documents(question, n_results=settings.n_results):
     # query_embedding = get_openai_embedding(question)
     results = collection.query(query_texts=question, n_results=n_results)
     docs = results["documents"][0]      # [0] = first (only) query
@@ -121,7 +121,7 @@ def query_documents(question, n_results=10):
 
 PRICE_IN  = 0.15 / 1_000_000     # $ per input token  — verify on the pricing page
 PRICE_OUT = 0.60 / 1_000_000 
-GENERATOR = "typhoon"
+GENERATOR = settings.generator
 
 if GENERATOR == "typhoon":
     c, model = typhoon_client, "typhoon-v2.5-30b-a3b-instruct"
@@ -151,14 +151,14 @@ def generate_response(question, relevant_chunks):
         temperature=0,
     )
     u = response.usage 
-    if(GENERATOR == "GPT"):
+    if(GENERATOR == "openai"):
         cost = u.prompt_tokens * PRICE_IN + u.completion_tokens * PRICE_OUT
         print(f"in={u.prompt_tokens} out={u.completion_tokens} cost=${cost:.6f}")
     answer = response.choices[0].message.content
     return answer
 
-Retriever_type = 'both'
-n_results = 10
+Retriever_type = settings.retriever
+# n_results = 10
 
 def vector_idx(question,n = 20):
     r = collection.query(query_texts=question,n_results=n)
@@ -170,28 +170,25 @@ def bm25_idx(question,n = 20):
     return [all_ids[i]for i in top]
 
 
-def query_hybrid(question,n_results = 10 ,k = 10,w_bm25 = 3.0):
-    # t0 = time.perf_counter()
-    # v_ids = vector_idx(question)
-    # t1 = time.perf_counter()
-    # b_ids = bm25_idx(question)
-    # t2 = time.perf_counter()
-    # print(f"  vector {(t1-t0)*1000:.0f}ms  bm25 {(t2-t1)*1000:.0f}ms")
+def query_hybrid(question,n_results = settings.n_results ,rrf_k = settings.rrf_k,bm25_weight = settings.bm25_weight):
     scores = {}
-    for lst,weight in ((vector_idx(question),1.0),(bm25_idx(question),w_bm25)):
+    for lst,weight in ((vector_idx(question),1.0),(bm25_idx(question),bm25_weight)):
         for rank,cid in enumerate(lst):
-            scores[cid] = scores.get(cid, 0) + weight / (k + rank + 1)
+            scores[cid] = scores.get(cid, 0) + weight / (rrf_k + rank + 1)
     best = sorted(scores, key=scores.get, reverse=True)[:n_results]
     return [chunk_by_id[c] for c in best]
 
+def retrieve(question, n_results):
+    if Retriever_type == "vector":
+        return query_documents(question, n_results=n_results)
+    if Retriever_type == "bm25":
+        return query_bm25(question, n_results=n_results)
+    return query_hybrid(question, n_results=n_results)
+
+
 def answer_question(question):
     t0 = time.perf_counter()
-    if Retriever_type == 'vec':
-        chunks = query_documents(question, n_results=n_results)
-    elif Retriever_type == 'bm25':
-        chunks = query_bm25(question, n_results=n_results)
-    else:
-        chunks = query_hybrid(question, n_results=n_results)
+    chunks = retrieve(question=question,n_results=settings.n_results)
     t1 = time.perf_counter()
     answer = generate_response(question, chunks)
     t2 = time.perf_counter()
@@ -243,12 +240,12 @@ def main():
             return
         question = sys.argv[2]
         # chunks = query_documents(question)
-        if Retriever_type == 'vec':
-            chunks = query_documents(question, n_results=n_results)
+        if Retriever_type == 'vector':
+            chunks = query_documents(question, n_results=settings.n_results)
         elif Retriever_type == 'bm25':
-            chunks = query_bm25(question, n_results=n_results)
+            chunks = query_bm25(question, n_results=settings.n_results)
         else:
-            chunks = query_hybrid(question, n_results=n_results)
+            chunks = query_hybrid(question, n_results=settings.n_results)
 
 
         print("\n" + generate_response(question, chunks))
